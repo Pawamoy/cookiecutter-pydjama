@@ -26,6 +26,7 @@
         "2005-2016"
     ],
     "version": "0.1.0",
+    "license": ["BSD-2", "MPL 2.0"],
     "c_extension_support": ["no", "yes"],
     "c_extension_cython": ["no", "yes"],
     "c_extension_optional": ["no", "yes"],

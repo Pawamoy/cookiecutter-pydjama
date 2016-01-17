@@ -98,7 +98,13 @@ Overview
 
 {{ cookiecutter.project_short_description|wordwrap(119) }}
 
-* Free software: BSD license
+License
+=======
+
+Software licensed under `{{cookiecutter.license}}`_ license.
+
+.. _BSD-2 : https://opensource.org/licenses/BSD-2-Clause
+.. _MPL 2.0 : https://www.mozilla.org/en-US/MPL/2.0/
 
 Installation
 ============

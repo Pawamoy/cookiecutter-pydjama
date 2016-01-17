@@ -77,7 +77,7 @@ class optional_build_ext(build_ext):
 setup(
     name='{{ cookiecutter.distribution_name }}',
     version='{{ cookiecutter.version }}',
-    license='BSD',
+    license='{{cookiecutter.license}}',
     description={{ '{0!r}'.format(cookiecutter.project_short_description).lstrip('ub') }},
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
@@ -95,7 +95,11 @@ setup(
         # complete classifier list: http://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
+        {%- if cookiecutter.license|lower == "bsd-2" -%}
         'License :: OSI Approved :: BSD License',
+        {%- elif cookiecutter.license|lower == "mpl 2.0" -%}
+        'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
+        {%- endif -%}
         'Operating System :: Unix',
         'Operating System :: POSIX',
         'Operating System :: Microsoft :: Windows',
