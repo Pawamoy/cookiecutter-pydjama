@@ -6,8 +6,22 @@ Use cookiecutter's ``--checkout`` options to use a specific version.
 master
 ------
 
-* Removed all references to Python 2.6 from various config files. Contributed by Lucas Wiman, 
+* Removed all references to Python 2.6 from various config files. Contributed by Lucas Wiman,
   `#48 <https://github.com/ionelmc/cookiecutter-pylibrary/pull/48>`_.
+* Rename ``bin_name`` to ``command_line_interface_bin_name`` for more clarity.
+* Added ``test_matrix_separate_coverage`` option with default to ``"no"``. Previously the template generated two environment
+  flavors in ``tox.ini``: ``cover`` and ``nocov`` (what ``test_matrix_separate_coverage == "yes"`` would generate now).
+* Added ``sphinx_doctest`` option to complement the lack of doctest support when ``test_matrix_separate_coverage == "no"`` is
+  used.
+* Added ``isort`` checks in ``tox.ini``. Contributed by Fábio C. Barrionuevo da Luz in `#50
+  <https://github.com/ionelmc/cookiecutter-pylibrary/pull/50>`_.
+* Removed ``"extension-coveralls"`` if it's not used. Contributed by Fábio C. Barrionuevo da Luz in `#49
+  <https://github.com/ionelmc/cookiecutter-pylibrary/pull/49>`_.
+* Fixed issues when running ``ci/bootstrap.py`` on Python 3.
+* Fixed issues with Sphinx configuration so it works properly with Sphinx 1.4. Contributed by Sean Fisk in `#55
+  <https://github.com/ionelmc/cookiecutter-pylibrary/pull/55>`_.
+* Changed default options to use templating and reuse the `project_name`. Contributed by Christoph Sarnowski in `#56
+  <https://github.com/ionelmc/cookiecutter-pylibrary/pull/56>`_.
 
 v1.11 (2016-01-05)
 ------------------

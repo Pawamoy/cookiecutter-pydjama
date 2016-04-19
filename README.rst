@@ -15,12 +15,14 @@ Cookiecutter_ template for a Python python library. |travis| |appveyor|
 *Notes*:
 
 * This is largely designed to address this `blog post about packaging python
-  libraries <http://blog.ionelmc.ro/2014/05/25/python-packaging/>`_.
+  libraries <https://blog.ionelmc.ro/2014/05/25/python-packaging/>`_.
 
   * ... and it will save you from `packaging pitfalls
-    <http://blog.ionelmc.ro/2014/06/25/python-packaging-pitfalls/>`_.
+    <https://blog.ionelmc.ro/2014/06/25/python-packaging-pitfalls/>`_.
 * There's a bare library using this template (if you're curious about the final
   result): https://github.com/ionelmc/python-nameless.
+
+.. contents:: Table of Contents
 
 Features
 --------
@@ -63,8 +65,8 @@ them, just run this in your shell or command prompt::
 
   pip install tox cookiecutter
 
-Usage
------
+Usage and options
+-----------------
 
 This template is more involved than the regular `cookiecutter-pypackage
 <https://github.com/audreyr/cookiecutter-pypackage>`_.
@@ -117,6 +119,14 @@ You will be asked for these fields:
             "no"
       - Enable the test matrix generator script. If you don't have a huge number of test environments then probably you
         don't need this.
+    * - ``test_matrix_separate_coverage``
+      - .. code:: python
+
+            "no"
+      - Enable this to have a separate env for measuring coverage. Indicated if you want to run doctests or collect tests
+        from ``src`` with pytest.
+
+        Note that ``test_matrix_separate_coverage == 'no'`` only works if you also have ``test_matrix_configurator == 'no'``.
     * - ``test_runner``
       - .. code:: python
 
@@ -132,7 +142,7 @@ You will be asked for these fields:
         * ``click`` - a command implemented with `click <http://click.pocoo.org/>`_ - which you can use to build more complex commands.
         * ``no`` - no CLI at all.
 
-    * - ``bin_name``
+    * - ``command_line_interface_bin_name``
       - .. code:: python
 
             "nameless"
@@ -141,13 +151,13 @@ You will be asked for these fields:
     * - ``cookiecutter.coveralls``
       - .. code:: python
 
-            "yes"
+            "no"
       - Enable pushing coverage data to Coveralls_ and add badge in ``README.rst``.
 
     * - ``cookiecutter.codecov``
       - .. code:: python
 
-            "no"
+            "yes"
       - Enable pushing coverage data to Codecov_ and add badge in ``README.rst``.
 
         **Note:** Doesn't support pushing C extension coverage yet.
@@ -181,14 +191,20 @@ You will be asked for these fields:
     * - ``sphinx_theme``
       - .. code:: python
 
-            "readthedocs"
+            "sphinx-rtd-theme"
       - What Sphinx_ theme to use.
-
-        If theme is different than ``"readthedocs"`` then it's also going to be added in ``docs/requirements.txt``.
 
         Suggested alternative: `sphinx-py3doc-enhanced-theme
         <https://pypi.python.org/pypi/sphinx_py3doc_enhanced_theme>` for a responsive theme based on
         the Python 3 documentation.
+    * - ``sphinx_doctest``
+      - .. code:: python
+
+            "no"
+      - Set to ``"yes"`` if you want to enable doctesting in the `docs` environment. Works best with
+        ``test_matrix_separate_coverage == 'no'``.
+
+        Read more about `doctest support in Sphinx <http://www.sphinx-doc.org/en/stable/ext/doctest.html>`_.
     * - ``travis``
       - .. code:: python
 
@@ -269,15 +285,34 @@ You should read `Semantic Versioning 2.0.0 <http://semver.org/>`_ before bumping
 Building and uploading
 ''''''''''''''''''''''
 
-To make a release of the project on PyPI, the most simple usage is::
+Before building dists make sure you got a clean build area::
 
-  python setup.py release
-  twine upload dist/*
+    rm -rf build
+    rm -rf src/*.egg-info
 
-Explanations:
+Note:
 
-* ``release`` is aliased to ``register clean sdist bdist_wheel``, see ``setup.cfg``.
-* `twine <https://pypi.python.org/pypi/twine>`_ is a tool that you can use to securely upload your releases to PyPI.
+    Dirty ``build`` or ``egg-info`` dirs can cause problems: missing or stale files in the resulting dist or
+    strange and confusing errors. Avoid having them around.
+
+Then you should check that you got no packaging issues::
+
+    tox -e check
+
+And then you can build the ``sdist``, and if possible, the ``bdist_wheel`` too::
+
+    python setup.py clean --all sdist bdist_wheel
+
+To make a release of the project on PyPI, assuming you got some distributions in ``dist/``, the most simple usage is::
+
+    twine register dist/*
+    twine upload --skip-existing dist/*
+
+Note:
+
+    `twine <https://pypi.python.org/pypi/twine>`_ is a tool that you can use to securely upload your releases to PyPI.
+    You can still use the old ``python setup.py register sdist bdist_wheel upload`` but it's not very secure - your PyPI
+    password will be sent over plaintext.
 
 Changelog
 ---------
