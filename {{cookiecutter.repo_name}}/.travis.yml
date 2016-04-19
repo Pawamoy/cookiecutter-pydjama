@@ -22,6 +22,7 @@ before_install:
   - python --version
   - uname -a
   - lsb_release -a
+  {% if cookiecutter.codecov|lower == 'yes' %}- pip install codecov{% endif %}
 install:
   - pip install tox
   - virtualenv --version
@@ -42,3 +43,7 @@ notifications:
   email:
     on_success: never
     on_failure: always
+{% if cookiecutter.codecov|lower == 'yes' -%}
+after_success:
+  - codecov
+{% endif -%}
