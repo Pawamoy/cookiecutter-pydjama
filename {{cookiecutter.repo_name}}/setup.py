@@ -95,11 +95,11 @@ setup(
         # complete classifier list: http://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
-        {%- if cookiecutter.license|lower == "bsd-2" -%}
+        {% if cookiecutter.license|lower == "bsd-2" -%}
         'License :: OSI Approved :: BSD License',
-        {%- elif cookiecutter.license|lower == "mpl 2.0" -%}
+        {% elif cookiecutter.license|lower == "mpl 2.0" -%}
         'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
-        {%- endif -%}
+        {% endif -%}
         'Operating System :: Unix',
         'Operating System :: POSIX',
         'Operating System :: Microsoft :: Windows',
