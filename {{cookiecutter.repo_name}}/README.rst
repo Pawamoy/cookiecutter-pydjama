@@ -21,7 +21,7 @@ Overview
 .. |supported-versions|
 .. |supported-implementations|
 
-.. |docs| image:: https://readthedocs.io/projects/{{ cookiecutter.repo_name }}/badge/?version=latest
+.. |docs| image:: https://readthedocs.org/projects/{{ cookiecutter.repo_name }}/badge/?version=latest
     :target: https://{{ cookiecutter.repo_name|replace('.', '') }}.readthedocs.io/en/latest/
     :alt: Documentation Status
 {{ '' }}
