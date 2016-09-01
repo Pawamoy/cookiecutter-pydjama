@@ -26,7 +26,6 @@ def replace_contents(filename, what, replacement):
 if __name__ == "__main__":
     today = datetime.date.today()
     replace_contents('CHANGELOG.rst', '<TODAY>', today.strftime("%Y-%m-%d"))
-    replace_contents(join('docs', 'conf.py'), '<YEAR>', today.strftime("%Y"))
     replace_contents('LICENSE', '<YEAR>', today.strftime("%Y"))
 
 {% if cookiecutter.test_matrix_configurator|lower == "yes" %}

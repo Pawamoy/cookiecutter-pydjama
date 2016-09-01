@@ -8,10 +8,10 @@ import os
 {% endif -%}
 import re
 from glob import glob
-from os.path import basename, dirname, join, splitext{%- if cookiecutter.c_extension_support|lower == 'yes' -%}, relpath{%- endif %}
+from os.path import basename, dirname, join{%- if cookiecutter.c_extension_support|lower == 'yes' -%}, relpath{%- endif %}, splitext
 
 
-from setuptools import {%- if cookiecutter.c_extension_support|lower == 'yes' -%}Extension, {%- endif -%}find_packages, setup 
+from setuptools import {% if cookiecutter.c_extension_support|lower == 'yes' -%}Extension, {% endif -%}find_packages, setup
 
 {%- if cookiecutter.c_extension_support|lower == 'yes' -%}
 {%- if cookiecutter.c_extension_optional|lower == 'yes' %}
@@ -72,7 +72,7 @@ class optional_build_ext(build_ext):
 setup(
     name='{{ cookiecutter.distribution_name }}',
     version='{{ cookiecutter.version }}',
-    license='{{cookiecutter.license}}',
+    license='{{ cookiecutter.license }}',
     description={{ '{0!r}'.format(cookiecutter.project_short_description).lstrip('ub') }},
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),

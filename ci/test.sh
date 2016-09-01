@@ -11,7 +11,6 @@ echo "\033[1;36m================================\033[0m"
 echo "\033[1;36m================================ Testing: $1\033[0m"
 echo "\033[1;36m================================\033[0m"
 
-set -x
 pwd
 cp ci/envs/$1.cookiecutterrc ~/.cookiecutterrc
 cat ~/.cookiecutterrc

@@ -13,7 +13,6 @@ Overview
 {% if cookiecutter.scrutinizer|lower == 'yes' %}|scrutinizer|{% endif %}
 {% if cookiecutter.codacy|lower == 'yes' %}|codacy|{% endif %}
 {% if cookiecutter.codeclimate|lower == 'yes' %}|codeclimate|{% endif %}
-|docs|
 |version|
 |downloads|
 |wheel|
@@ -21,10 +20,6 @@ Overview
 .. |supported-versions|
 .. |supported-implementations|
 
-.. |docs| image:: https://readthedocs.org/projects/{{ cookiecutter.repo_name }}/badge/?version=latest
-    :target: https://{{ cookiecutter.repo_name|replace('.', '') }}.readthedocs.io/en/latest/
-    :alt: Documentation Status
-{{ '' }}
 {%- if cookiecutter.travis|lower == 'yes' %}
 .. |travis| image:: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg?branch=master
     :alt: Travis-CI Build Status
@@ -112,26 +107,11 @@ Installation
 Documentation
 =============
 
-https://{{ cookiecutter.repo_name|replace('.', '') }}.readthedocs.io/
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name|replace('.', '') }}.wiki
 
 Development
 ===========
 
-To run the all tests run::
+To run all the tests::
 
     tox
-
-Note, to combine the coverage data from all the tox environments run:
-
-- Windows
-
-::
-
-        set PYTEST_ADDOPTS=--cov-append
-        tox
-
-- Other
-
-::
-
-        PYTEST_ADDOPTS=--cov-append tox
