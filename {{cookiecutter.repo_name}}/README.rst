@@ -112,6 +112,4 @@ https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name|
 Development
 ===========
 
-To run all the tests::
-
-    tox
+To run all the tests: ``tox``
