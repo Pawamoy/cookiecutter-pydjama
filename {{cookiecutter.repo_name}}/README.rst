@@ -14,7 +14,6 @@ Overview
 {% if cookiecutter.codacy|lower == 'yes' %}|codacy|{% endif %}
 {% if cookiecutter.codeclimate|lower == 'yes' %}|codeclimate|{% endif %}
 |version|
-|downloads|
 |wheel|
 |gitter|
 
@@ -60,10 +59,6 @@ Overview
 {% endif %}
 .. |version| image:: https://img.shields.io/pypi/v/{{ cookiecutter.distribution_name }}.svg?style=flat
     :alt: PyPI Package latest release
-    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
-
-.. |downloads| image:: https://img.shields.io/pypi/dm/{{ cookiecutter.distribution_name }}.svg?style=flat
-    :alt: PyPI Package monthly downloads
     :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/{{ cookiecutter.distribution_name }}.svg?style=flat
