@@ -16,9 +16,7 @@ Overview
 |version|
 |downloads|
 |wheel|
-
-.. |supported-versions|
-.. |supported-implementations|
+|gitter|
 
 {%- if cookiecutter.travis|lower == 'yes' %}
 .. |travis| image:: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg?branch=master
@@ -72,18 +70,16 @@ Overview
     :alt: PyPI Wheel
     :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/{{ cookiecutter.distribution_name }}.svg?style=flat
-    :alt: Supported versions
-    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
-
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/{{ cookiecutter.distribution_name }}.svg?style=flat
-    :alt: Supported implementations
-    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
 {% if cookiecutter.scrutinizer|lower == 'yes' %}
 .. |scrutinizer| image:: https://img.shields.io/scrutinizer/g/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/master.svg?style=flat
     :alt: Scrutinizer Status
     :target: https://scrutinizer-ci.com/g/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
 {% endif %}
+
+.. |gitter| image:: https://badges.gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg
+    :alt: Join the chat at https://gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+    :target: https://gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 
 .. end-badges
 
