@@ -15,8 +15,6 @@ include CONTRIBUTING.rst
 include LICENSE
 include README.rst
 
-include tox.ini .travis.yml appveyor.yml
-
-include release.sh
+include tox.ini .travis.yml .landscape.yml
 
 global-exclude *.py[cod] __pycache__ *.so *.dylib release.sh
