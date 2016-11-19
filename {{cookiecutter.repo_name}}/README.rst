@@ -98,7 +98,7 @@ Installation
 Documentation
 =============
 
-https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name|replace('.', '') }}.wiki
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name|replace('.', '') }}/wiki
 
 Development
 ===========
