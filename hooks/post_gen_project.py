@@ -104,6 +104,8 @@ if __name__ == "__main__":
     The project doesn't use the test matrix configurator, but in case
     you change your mind just edit `setup.cfg` and run `ci/bootstrap.py`.
 {% endif %}
+
+    Remember to enable continuous integration, documentation generation and online code health check before your first push ;)
 """)
 
     command_line_interface_bin_name = '{{ cookiecutter.command_line_interface_bin_name }}'
