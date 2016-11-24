@@ -1,0 +1,6 @@
+default_context:
+  command_line_interface: click
+  package_name: nameless
+  repo_name: python-nameless
+  sphinx_theme: sphinx-rtd-theme
+  use_django: 'no'

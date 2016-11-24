@@ -28,30 +28,13 @@ if __name__ == "__main__":
     replace_contents('CHANGELOG.rst', '<TODAY>', today.strftime("%Y-%m-%d"))
     replace_contents('LICENSE', '<YEAR>', today.strftime("%Y"))
 
-{% if cookiecutter.test_matrix_configurator|lower == "yes" %}
-    print("""
-################################################################################
-
-    For your convenience, the test environments are getting configured for the
-    first time, as you have selected "yes" for `test_matrix_configurator` ...
-""")
-    try:
-        subprocess.check_call(['tox'])
-    except Exception:
-        try:
-            subprocess.check_call([sys.executable, '-mtox'])
-        except Exception:
-            subprocess.check_call([sys.executable, join('ci', 'bootstrap.py')])
-{% endif %}
 
 {%- if cookiecutter.command_line_interface|lower == 'no' %}
     os.unlink(join('src', '{{ cookiecutter.package_name|replace('-', '_') }}', '__main__.py'))
     os.unlink(join('src', '{{ cookiecutter.package_name|replace('-', '_') }}', 'cli.py'))
 {% endif %}
 
-{%- if cookiecutter.test_matrix_configurator|lower == 'no' %}
     os.unlink(join('ci', 'templates', 'tox.ini'))
-{% endif %}
 
 {%- if cookiecutter.appveyor|lower == 'no' %}
     os.unlink(join('ci', 'appveyor-bootstrap.py'))

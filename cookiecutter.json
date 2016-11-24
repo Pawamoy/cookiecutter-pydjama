@@ -25,13 +25,8 @@
         "2005-2016"
     ],
     "version": "0.1.0",
-    "license": ["MPL 2.0", "BSD-2"],
-    "c_extension_support": ["no", "yes"],
-    "c_extension_cython": ["no", "yes"],
-    "c_extension_optional": ["no", "yes"],
-    "test_matrix_configurator": ["no", "yes"],
-    "test_matrix_separate_coverage": ["no", "yes"],
-    "test_runner": ["pytest", "nose"],
+    "use_django": ["no", "yes"],
+    "django_versions": "1.8,1.9,1.10",
     "command_line_interface": ["no", "plain", "argparse", "click"],
     "command_line_interface_bin_name": "{{ cookiecutter.distribution_name }}",
     "coveralls": ["no", "yes"],
@@ -44,5 +39,7 @@
     "sphinx_doctest": ["no", "yes"],
     "travis": ["yes", "no"],
     "appveyor": ["no", "yes"],
-    "requiresio": ["no", "yes"]
+    "requiresio": ["no", "yes"],
+    "gitter": ["yes", "no"],
+    "pyup": ["yes", "no"]
 }

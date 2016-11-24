@@ -1,23 +1,13 @@
 [paths]
-{%- if cookiecutter.test_matrix_separate_coverage|lower == 'yes' or cookiecutter.test_matrix_configurator|lower == 'yes' %}
-source = src
-{%- else %}
 source =
    src/{{ cookiecutter.package_name }}
    */site-packages/{{ cookiecutter.package_name }}
-{%- endif %}
 
 [run]
 branch = true
-{%- if cookiecutter.test_matrix_separate_coverage|lower == 'yes' or cookiecutter.test_matrix_configurator|lower == 'yes' %}
-source =
-    src
-    tests
-{%- else %}
 source =
     {{ cookiecutter.package_name }}
     tests
-{%- endif %}
 parallel = true
 
 [report]

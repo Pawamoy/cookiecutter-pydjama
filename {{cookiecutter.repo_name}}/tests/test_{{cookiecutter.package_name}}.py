@@ -4,17 +4,12 @@ from click.testing import CliRunner
 from {{ cookiecutter.package_name }}.cli import main
 {%- elif cookiecutter.command_line_interface|lower in ['plain', 'argparse'] %}
 from {{ cookiecutter.package_name }}.cli import main
-{%- endif %}
-{%- if cookiecutter.test_matrix_configurator|lower == 'yes' and cookiecutter.test_matrix_configurator|lower == 'no' or
-       cookiecutter.command_line_interface == 'no' %}
+{%- else %}
 import {{ cookiecutter.package_name }}
 {%- endif %}
 
 
 def test_main():
-{%- if cookiecutter.test_matrix_configurator|lower == 'yes' and cookiecutter.test_matrix_configurator|lower == 'no' %}
-    assert 'site-packages' in {{ cookiecutter.package_name }}.__file__
-{%- endif %}
 {%- if cookiecutter.command_line_interface|lower == 'click' %}
     runner = CliRunner()
     result = runner.invoke(main, [])
