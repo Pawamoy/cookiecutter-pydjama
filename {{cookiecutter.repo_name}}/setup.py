@@ -20,7 +20,7 @@ def read(*names, **kwargs):
 setup(
     name='{{ cookiecutter.distribution_name }}',
     version='{{ cookiecutter.version }}',
-    license='{{ cookiecutter.license }}',
+    license='MPL 2.0',
     description={{ '{0!r}'.format(cookiecutter.project_short_description).lstrip('ub') }},
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S)
@@ -43,9 +43,9 @@ setup(
         'Operating System :: Unix',
         'Operating System :: POSIX',
         'Operating System :: Microsoft :: Windows',
-        'Framework :: Django',{% if '1.8' in cookiecutter.django_versions and cookiecutter.use_django|lower == 'yes' %}
-        'Framework :: Django :: 1.8',{% endif %}{% if '1.9' in cookiecutter.django_versions and cookiecutter.use_django|lower == 'yes' %}
-        'Framework :: Django :: 1.9',{% endif %}{% if '1.10' in cookiecutter.django_versions and cookiecutter.use_django|lower == 'yes' %}
+        'Framework :: Django',{% if '1.8' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
+        'Framework :: Django :: 1.8',{% endif %}{% if '1.9' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
+        'Framework :: Django :: 1.9',{% endif %}{% if '1.10' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
         'Framework :: Django :: 1.10',{% endif %}
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',

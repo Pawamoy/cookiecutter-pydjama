@@ -39,7 +39,7 @@ try:
 except ImportError:
     import traceback
     traceback.print_exc()
-    msg = "To fix this error, run: pip install -r requirements_test.txt"
+    msg = "To fix this error, run: pip install -r requirements/test.txt"
     raise ImportError(msg)
 
 

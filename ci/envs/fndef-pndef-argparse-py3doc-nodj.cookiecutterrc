@@ -1,6 +1,6 @@
 default_context:
   command_line_interface: argparse
+  django: 'no'
   package_name: nameless
   repo_name: python-nameless
   sphinx_theme: sphinx-py3doc-enhanced-theme
-  use_django: 'no'

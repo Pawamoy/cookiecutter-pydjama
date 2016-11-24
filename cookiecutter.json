@@ -25,7 +25,7 @@
         "2005-2016"
     ],
     "version": "0.1.0",
-    "use_django": ["no", "yes"],
+    "django": ["no", "yes"],
     "django_versions": "1.8,1.9,1.10",
     "command_line_interface": ["no", "plain", "argparse", "click"],
     "command_line_interface_bin_name": "{{ cookiecutter.distribution_name }}",

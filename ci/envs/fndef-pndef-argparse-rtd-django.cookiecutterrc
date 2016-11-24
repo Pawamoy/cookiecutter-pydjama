@@ -1,6 +1,6 @@
 default_context:
   command_line_interface: argparse
+  django: 'yes'
   package_name: nameless
   repo_name: python-nameless
   sphinx_theme: sphinx-rtd-theme
-  use_django: 'yes'

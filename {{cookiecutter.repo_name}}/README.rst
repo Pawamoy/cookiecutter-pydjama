@@ -5,7 +5,7 @@
 .. start-badges
 
 
-{%- if cookiecutter.travis|lower == 'yes' %}
+{% if cookiecutter.travis|lower == 'yes' %}
 |travis|
 {%- endif %}
 {%- if cookiecutter.appveyor|lower == 'yes' %}
@@ -41,7 +41,7 @@
 |gitter|
 {%- endif %}
 
-{%- if cookiecutter.travis|lower == 'yes' %}
+{% if cookiecutter.travis|lower == 'yes' %}
 .. |travis| image:: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg?branch=master
     :alt: Travis-CI Build Status
     :target: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/

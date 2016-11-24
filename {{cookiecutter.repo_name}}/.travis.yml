@@ -2,23 +2,45 @@ language: python
 python: '3.5'
 sudo: false
 env:
-  global:
-    - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
-    - SEGFAULT_SIGNALS=all
-  matrix:
-    - TOXENV=check
-{% for env in ['py27', 'py33', 'py34', 'py35', 'pypy'] %}
-    - TOXENV={{ env }}
-      {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
-      {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
+  - TOXENV=check
+{% for env in ['py27', 'py34', 'py35', 'pypy'] %}
+{% if cookiecutter.django|lower == "yes" %}
+  {%- if '1.8' in cookiecutter.django_versions %}
+  - TOXENV={{ env }}-django-18
+  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
+  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}{% endif %}
+  {%- if '1.9' in cookiecutter.django_versions %}
+  - TOXENV={{ env }}-django-19
+  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
+  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}{% endif %}
+  {%- if '1.10' in cookiecutter.django_versions %}
+  - TOXENV={{ env }}-django-110
+  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
+  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}{% endif %}
+  {%- if 'master' in cookiecutter.django_versions %}
+  - TOXENV={{ env }}-django-master
+  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
+  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}{% endif %}
+{% else %}
+  - TOXENV={{ env }}
+  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
+  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
+{% endif %}
 {%- endfor %}
+matrix:
+  fast_finish: true{% if 'master' in cookiecutter.django_versions %}
+  allow_failures:
+    - env: TOX_ENV=py27-django-master
+    - env: TOX_ENV=py34-django-master
+    - env: TOX_ENV=py35-django-master{% endif %}
 before_install:
   - python --version
   - uname -a
   - lsb_release -a
-  {% if cookiecutter.codecov|lower == 'yes' %} -pip install codecov{% endif %}
+  {% if cookiecutter.codecov|lower == 'yes' %}- pip install codecov{% endif %}
 install:
   - pip install tox
+  - pip install -r requirements/ci.txt
   - virtualenv --version
   - easy_install --version
   - pip --version

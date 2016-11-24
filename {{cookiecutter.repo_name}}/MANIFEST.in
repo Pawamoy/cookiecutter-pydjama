@@ -19,7 +19,7 @@ include tox.ini
 
 include *.yml
 
-{%- if cookiecutter.use_django|lower == "yes" %}
+{%- if cookiecutter.django|lower == "yes" %}
 include runtests.py
 {%- endif %}
 
