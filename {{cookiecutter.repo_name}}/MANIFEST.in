@@ -17,17 +17,10 @@ include README.rst
 
 include tox.ini
 
-{%- if cookiecutter.travis|lower == "yes" %}
-include .travis.yml
-{%- endif %}
-{%- if cookiecutter.landscape|lower == "yes" %}
-include .landscape.yml
-{%- endif %}
+include *.yml
+
 {%- if cookiecutter.use_django|lower == "yes" %}
 include runtests.py
-{%- endif %}
-{%- if cookiecutter.appveyor|lower == "yes" %}
-include appveyor.yml
 {%- endif %}
 
 recursive-include requirements *.txt
