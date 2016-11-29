@@ -35,6 +35,9 @@ if __name__ == "__main__":
     os.unlink(join('src', '{{ cookiecutter.package_name|replace('-', '_') }}', 'cli.py'))
 {% endif %}
 
+{%- if cookiecutter.django|lower == 'no' %}
+    os.unlink('runtests.py')
+{% endif %}
 
 {%- if cookiecutter.appveyor|lower == 'no' %}
     os.unlink('appveyor.yml')
