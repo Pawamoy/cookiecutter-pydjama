@@ -78,8 +78,8 @@
 {% endif %}
 {%- if cookiecutter.codeclimate|lower == 'yes' %}
 .. |codeclimate| image:: https://codeclimate.com/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/badges/gpa.svg
-   :target: https://codeclimate.com/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
-   :alt: CodeClimate Quality Status
+    :target: https://codeclimate.com/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
+    :alt: CodeClimate Quality Status
 {% endif %}
 {% if cookiecutter.scrutinizer|lower == 'yes' %}
 .. |scrutinizer| image:: https://img.shields.io/scrutinizer/g/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/master.svg?style=flat
@@ -88,8 +88,8 @@
 {% endif %}
 {%- if cookiecutter.pyup|lower == 'yes' %}
 .. |pyup| image:: https://pyup.io/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/shield.svg
-     :target: https://pyup.io/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/
-     :alt: Updates
+    :target: https://pyup.io/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/
+    :alt: Updates
 {% endif %}
 {%- if cookiecutter.gitter|lower == 'yes' %}
 .. |gitter| image:: https://badges.gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg

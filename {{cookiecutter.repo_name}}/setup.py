@@ -44,9 +44,9 @@ setup(
         'Operating System :: POSIX',
         'Operating System :: Microsoft :: Windows',
         'Framework :: Django',{% if '1.8' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
-        'Framework :: Django :: 1.8',{% endif %}{% if '1.9' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
-        'Framework :: Django :: 1.9',{% endif %}{% if '1.10' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
-        'Framework :: Django :: 1.10',{% endif %}
+        # 'Framework :: Django :: 1.8',{% endif %}{% if '1.9' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
+        # 'Framework :: Django :: 1.9',{% endif %}{% if '1.10' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
+        # 'Framework :: Django :: 1.10',{% endif %}
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',

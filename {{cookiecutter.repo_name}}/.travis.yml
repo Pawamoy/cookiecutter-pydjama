@@ -38,6 +38,7 @@ before_install:
   - uname -a
   - lsb_release -a
   {% if cookiecutter.codecov|lower == 'yes' %}- pip install codecov{% endif %}
+  {% if cookiecutter.django|lower == 'yes' %}- pip install django{% endif %}
 install:
   - pip install tox
   - pip install -r requirements/ci.txt
