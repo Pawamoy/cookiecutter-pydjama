@@ -4,7 +4,7 @@
 
 from django.test import TestCase
 
-import accesscontrol
+import {{ cookiecutter.package_name }}
 
 
 class MainTestCase(TestCase):
@@ -12,7 +12,7 @@ class MainTestCase(TestCase):
         pass
 
     def test_main(self):
-        assert accesscontrol
+        assert {{ cookiecutter.package_name }}
 
     def tearDown(self):
         pass
