@@ -16,6 +16,7 @@ include LICENSE
 include README.rst
 
 include tox.ini
+include .style.yapf
 
 include *.yml
 

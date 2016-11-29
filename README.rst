@@ -17,7 +17,7 @@ Features
 * Travis-CI_ and AppVeyor_ for continuous testing.
 * Coveralls_ or Codecov_ for coverage tracking (using Tox_).
 * Documentation with Sphinx_, ready for ReadTheDocs_ (soon).
-* Configurations for isort_,  bumpversion_ and Landscape_.
+* Configurations for isort_,  bumpversion_, yapf_ and prospector_.
 * Packaging and code quality checks. This template comes with a tox environment (``check``) that will:
 
   * Check if your ``README.rst`` is valid.
@@ -162,3 +162,4 @@ See `CHANGELOG.rst <https://github.com/Pawamoy/cookiecutter-pydjama/blob/master/
 .. _Tox: http://testrun.org/tox/
 .. _Travis-CI: http://travis-ci.org/
 .. _Twine: https://pypi.python.org/pypi/twine
+.. _yapf: https://github.com/google/yapf
