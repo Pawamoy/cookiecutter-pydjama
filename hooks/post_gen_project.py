@@ -28,67 +28,48 @@ if __name__ == "__main__":
     replace_contents('CHANGELOG.rst', '<TODAY>', today.strftime("%Y-%m-%d"))
     replace_contents('LICENSE', '<YEAR>', today.strftime("%Y"))
 
+    shutil.rmtree('ci')
 
 {%- if cookiecutter.command_line_interface|lower == 'no' %}
     os.unlink(join('src', '{{ cookiecutter.package_name|replace('-', '_') }}', '__main__.py'))
     os.unlink(join('src', '{{ cookiecutter.package_name|replace('-', '_') }}', 'cli.py'))
 {% endif %}
 
-    os.unlink(join('ci', 'templates', 'tox.ini'))
 
 {%- if cookiecutter.appveyor|lower == 'no' %}
-    os.unlink(join('ci', 'appveyor-bootstrap.py'))
-    os.unlink(join('ci', 'appveyor-download.py'))
-    os.unlink(join('ci', 'appveyor-with-compiler.cmd'))
     os.unlink('appveyor.yml')
-    if os.path.exists(join('ci', 'templates', 'appveyor.yml')):
-        os.unlink(join('ci', 'templates', 'appveyor.yml'))
 {% endif %}
 
 {%- if cookiecutter.travis|lower == 'no' %}
     os.unlink('.travis.yml')
-    if os.path.exists(join('ci', 'templates', '.travis.yml')):
-        os.unlink(join('ci', 'templates', '.travis.yml'))
 {% endif %}
 
     print("""
-################################################################################
-################################################################################
+You have succesfully created `{{ cookiecutter.repo_name }}`
+with these cookiecutter parameters:
 
-    You have succesfully created `{{ cookiecutter.repo_name }}`.
-
-################################################################################
-
-    You've used these cookiecutter parameters:
 {% for key, value in cookiecutter.items()|sort %}
-        {{ "{0:26}".format(key + ":") }} {{ "{0!r}".format(value).strip("u") }}
+  {{ "{0:32}".format(key + ":") }} {{ "{0!r}".format(value).strip("u") }}
 {%- endfor %}
 
-################################################################################
+--------------
 
-    To get started run these:
+To get started run these:
 
-        cd {{ cookiecutter.repo_name }}
-        git init
-        git add --all
-        git commit -m "Add initial project skeleton."
-        git remote add origin git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.git
-        git push -u origin master
+  cd {{ cookiecutter.repo_name }}
+  git init
+  git add --all
+  git commit -m "Add initial project skeleton."
+  git remote add origin git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.git
+  git push -u origin master
+  git checkout -b template  # enable updating from cookiecutter
+  git push --set-upstream origin template
 
-{% if cookiecutter.test_matrix_configurator|lower == "yes" %}
-    To reconfigure your test/CI settings run:
+Remember to enable continuous integration, documentation generation
+and online code health check before your first push ;)
 
-        tox -e bootstrap
-
-    You can also run:
-
-        ci/bootstrap.py
-{% else %}
-    The project doesn't use the test matrix configurator, but in case
-    you change your mind just edit `setup.cfg` and run `ci/bootstrap.py`.
-{% endif %}
-
-    Remember to enable continuous integration, documentation generation and online code health check before your first push ;)
+Use './update.sh . gh:Pawamoy/cookiecutter-pydjama' to update your project
+with the last changes of pydjama.
 """)
 
     command_line_interface_bin_name = '{{ cookiecutter.command_line_interface_bin_name }}'
@@ -99,21 +80,21 @@ if __name__ == "__main__":
             warn("""
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!                                                                            !!
-!!      WARNING:                                                              !!
+!!  WARNING:                                                                  !!
 !!                                                                            !!
-!!          Your result package is broken. Your bin script named              !!
-!!          {0} !!
+!!    Your result package is broken. Your bin script named                    !!
+!!    {0}
 !!                                                                            !!
-!!          Python automatically adds the location of scripts to              !!
-!!          `sys.path`. Because of that, the bin script will fail             !!
-!!          to import your package because it has the same name               !!
-!!          (it will try to import itself as a module).                       !!
+!!    Python automatically adds the location of scripts to                    !!
+!!    `sys.path`. Because of that, the bin script will fail                   !!
+!!    to import your package because it has the same name                     !!
+!!    (it will try to import itself as a module).                             !!
 !!                                                                            !!
-!!          To avoid this problem you have two options:                       !!
+!!    To avoid this problem you have two options:                             !!
 !!                                                                            !!
-!!          * Remove the ".py" suffix from the `command_line_interface_bin_name`.                    !!
+!!    * Remove the ".py" suffix from the `command_line_interface_bin_name`.   !!
 !!                                                                            !!
-!!          * Use a different `package_name` {1} !!
+!!    * Use a different `package_name` {1}
 !!                                                                            !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 """.format(

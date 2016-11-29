@@ -1,52 +1,34 @@
-======================
-cookiecutter-pylibrary
-======================
+====================
+cookiecutter-pydjama
+====================
 
-Cookiecutter_ template for a Python python library. |travis| |appveyor|
+This cookiecutter is originally a fork of `cookiecutter-pylibrary`_, but it also
+combines features from `cookiecutter-pypackage`_ and `cookiecutter-djangopackage`_.
 
-.. |travis| image:: http://img.shields.io/travis/ionelmc/cookiecutter-pylibrary/master.svg?style=flat&label=Travis
-    :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/ionelmc/cookiecutter-pylibrary
-
-.. |appveyor| image:: https://img.shields.io/appveyor/ci/ionelmc/cookiecutter-pylibrary/master.svg?style=flat&label=AppVeyor
-    :alt: AppVeyor Build Status
-    :target: https://ci.appveyor.com/project/ionelmc/cookiecutter-pylibrary
-
-*Notes*:
-
-* This is largely designed to address this `blog post about packaging python
-  libraries <https://blog.ionelmc.ro/2014/05/25/python-packaging/>`_.
-
-  * ... and it will save you from `packaging pitfalls
-    <https://blog.ionelmc.ro/2014/06/25/python-packaging-pitfalls/>`_.
-* There's a bare library using this template (if you're curious about the final
-  result): https://github.com/ionelmc/python-nameless.
-
-.. contents:: Table of Contents
+It fits really well my needs, but maybe not yours, so don't hesitate to fork it.
 
 Features
 --------
 
-This is an "all inclusive" sort of template.
-
-* BSD 2-clause license or Mozilla Public License 2.0.
+* Support for Django_, tests with `django-fake-model`_.
+* Mozilla Public License 2.0.
 * Tox_ for managing test environments for Python 2.7, 3.3, PyPy etc.
-* Pytest_ or Nose_ for testing Python 2.7, 3.3, PyPy etc.
-* *Optional* support for creating a tests matrix out of dependencies and python versions.
+* Pytest_ for testing Python 2.7, 3.3, PyPy etc.
 * Travis-CI_ and AppVeyor_ for continuous testing.
 * Coveralls_ or Codecov_ for coverage tracking (using Tox_).
-* Documentation with Sphinx_, ready for ReadTheDocs_.
-* Configurations for:
-
-  * isort_
-  * bumpversion_
-
-* Support for C extensions (including coverage measurement for the C code).
+* Documentation with Sphinx_, ready for ReadTheDocs_ (soon).
+* Configurations for isort_,  bumpversion_ and Landscape_.
 * Packaging and code quality checks. This template comes with a tox environment (``check``) that will:
 
   * Check if your ``README.rst`` is valid.
   * Check if the ``MANIFEST.in`` has any issues.
   * Run ``flake8`` (a combo of PEP8, pyflakes and McCabe checks)
+  * Run ``prospector`` (landscape tool, soon).
+
+* Badges for everything in README.rst, including PyUp_, Landscape_ and Gitter_.
+* Script to easily release code to PyPiTest and PyPi.
+* Script to easily update your generated project when the cookiecutter changes. To enable this,
+  you wil need to create a ``template`` branch in the repository.
 
 Requirements
 ------------
@@ -55,258 +37,20 @@ Projects using this template have these minimal dependencies:
 
 * Cookiecutter_ - just for creating the project
 * Tox_ - for running the tests
-* Setuptools_ - for building the package, wheels etc. Now-days Setuptools is widely available, it shouldn't pose a
-  problem :)
+* Setuptools_ - for building the package, wheels etc.
+* Twine_ to register and upload the code to PyPiTest and PyPi.
 
-To get quickly started on a new system, just `install setuptools
-<https://pypi.python.org/pypi/setuptools#installation-instructions>`_ and then `install pip
-<https://pip.pypa.io/en/latest/installing.html>`_. That's the bare minimum to required install Tox_ and Cookiecutter_. To install
-them, just run this in your shell or command prompt::
+::
 
-  pip install tox cookiecutter
+  pip install tox cookiecutter twine
+
 
 Usage and options
 -----------------
 
-This template is more involved than the regular `cookiecutter-pypackage
-<https://github.com/audreyr/cookiecutter-pypackage>`_.
-
 First generate your project::
 
-  cookiecutter gh:ionelmc/cookiecutter-pylibrary
-
-You will be asked for these fields:
-
-.. list-table::
-    :header-rows: 1
-
-    * - Template variable
-      - Default
-      - Description
-
-    * - ``full_name``
-      - .. code:: python
-
-            "Ionel Cristian Maries"
-      - Main author of this library or application (used in ``AUTHORS.rst`` and ``setup.py``).
-
-        Can be set in your ``~/.cookiecutterrc`` config file.
-
-    * - ``email``
-      - .. code:: python
-
-            "contact@ionelmc.ro"
-      - Contact email of the author (used in ``AUTHORS.rst`` and ``setup.py``).
-
-        Can be set in your ``~/.cookiecutterrc`` config file.
-
-    * - ``website``
-      - .. code:: python
-
-            "https://blog.ionelmc.ro"
-      - Website of the author (used in ``AUTHORS.rst``).
-
-        Can be set in your ``~/.cookiecutterrc`` config file.
-
-    * - ``github_username``
-      - .. code:: python
-
-            "ionelmc"
-      - GitHub user name of this project (used for GitHub link).
-
-        Can be set in your ``~/.cookiecutterrc`` config file.
-
-    * - ``project_name``
-      - .. code:: python
-
-            "Nameless"
-      - Verbose project name, used in headings (docs, readme, etc).
-
-    * - ``repo_name``
-      - .. code:: python
-
-            "python-nameless"
-      - Repository name on GitHub (and project's root directory name).
-
-    * - ``package_name``
-      - .. code:: python
-
-            "nameless"
-      - Python package name (whatever you would import).
-
-    * - ``distribution_name``
-      - .. code:: python
-
-            "nameless"
-      - PyPI distribution name (what you would ``pip install``).
-
-    * - ``project_short_description``
-      - .. code:: python
-
-            "An example package [...]"
-      - One line description of the project (used in ``README.rst`` and ``setup.py``).
-
-    * - ``release_date``
-      - .. code:: python
-
-            "today"
-      - Release date of the project (ISO 8601 format) default to today (used in ``CHANGELOG.rst``).
-
-    * - ``year``
-      - .. code:: python
-
-            "now"
-      - Copyright year (used in Sphinx ``conf.py``).
-
-    * - ``version``
-      - .. code:: python
-
-            "0.1.0"
-      - Release version (see ``.bumpversion.cfg`` and in Sphinx ``conf.py``).
-
-    * - ``c_extension_support``
-      - .. code:: python
-
-            "no"
-      - Support C extensions (will slighly change the outputted ``setup.py``)
-
-    * - ``c_extension_cython``
-      - .. code:: python
-
-            "no"
-      - Support Cython extensions (will slighly change the outputted ``setup.py``)
-
-    * - ``c_extension_optional``
-      - .. code:: python
-
-            "no"
-      - Make C extensions optional (will allow your package to install even if extensions can't be compiled)
-
-    * - ``test_matrix_configurator``
-      - .. code:: python
-
-            "no"
-      - Enable the test matrix generator script. If you don't have a huge number of test environments then probably you
-        don't need this.
-
-    * - ``test_matrix_separate_coverage``
-      - .. code:: python
-
-            "no"
-      - Enable this to have a separate env for measuring coverage. Indicated if you want to run doctests or collect tests
-        from ``src`` with pytest.
-
-        Note that ``test_matrix_separate_coverage == 'no'`` only works if you also have ``test_matrix_configurator == 'no'``.
-
-    * - ``test_runner``
-      - .. code:: python
-
-            "pytest"
-      - Test runner to use. Available options: ``pytest`` or ``nose``.
-
-    * - ``command_line_interface``
-      - .. code:: python
-
-            "plain"
-      - Option to enable a CLI (a bin/executable file). Available options:
-
-        * ``plain`` - a very simple command.
-        * ``argparse`` - a command implemented with ``argparse``.
-        * ``click`` - a command implemented with `click <http://click.pocoo.org/>`_ - which you can use to build more complex commands.
-        * ``no`` - no CLI at all.
-
-    * - ``command_line_interface_bin_name``
-      - .. code:: python
-
-            "nameless"
-      - Name of the CLI bin/executable file (set the console script name in ``setup.py``).
-
-    * - ``cookiecutter.coveralls``
-      - .. code:: python
-
-            "no"
-      - Enable pushing coverage data to Coveralls_ and add badge in ``README.rst``.
-
-    * - ``cookiecutter.codecov``
-      - .. code:: python
-
-            "yes"
-      - Enable pushing coverage data to Codecov_ and add badge in ``README.rst``.
-
-        **Note:** Doesn't support pushing C extension coverage yet.
-
-    * - ``cookiecutter.landscape``
-      - .. code:: python
-
-            "no"
-      - Add a Landscape_ badge in ``README.rst``.
-
-    * - ``cookiecutter.scrutinizer``
-      - .. code:: python
-
-            "no"
-      - Add a Scrutinizer_ badge in ``README.rst``.
-
-    * - ``cookiecutter.codacy``
-      - .. code:: python
-
-            "no"
-      - Add a Codacy_ badge in ``README.rst``.
-
-        **Note:** After importing the project in Codacy, find the hexadecimal project ID from settings and replace it in badge URL
-
-    * - ``cookiecutter.codeclimate``
-      - .. code:: python
-
-            "no"
-      - Add a CodeClimate_ badge in ``README.rst``.
-
-    * - ``sphinx_theme``
-      - .. code:: python
-
-            "sphinx-rtd-theme"
-      - What Sphinx_ theme to use.
-
-        Suggested alternative: `sphinx-py3doc-enhanced-theme
-        <https://pypi.python.org/pypi/sphinx_py3doc_enhanced_theme>` for a responsive theme based on
-        the Python 3 documentation.
-
-    * - ``sphinx_doctest``
-      - .. code:: python
-
-            "no"
-      - Set to ``"yes"`` if you want to enable doctesting in the `docs` environment. Works best with
-        ``test_matrix_separate_coverage == 'no'``.
-
-        Read more about `doctest support in Sphinx <http://www.sphinx-doc.org/en/stable/ext/doctest.html>`_.
-
-    * - ``travis``
-      - .. code:: python
-
-            "yes"
-      - If you want the Travis-CI_ badge and configuration.
-
-    * - ``appveyor``
-      - .. code:: python
-
-            "yes"
-      - If you want the AppVeyor_ badge and configuration.
-
-    * - ``requiresio``
-      - .. code:: python
-
-            "yes"
-      - If you want the `requires.io`_ badge and configuration.
-
-The testing (``tox.ini`` and ``.travis.yml``) configuration is generated from templates. For your convenience there's an
-initial bootstrap ``tox.ini``, to get the initial generation going just run::
-
-  tox
-
-You can later regenerate ``tox.ini`` and ``.travis.yml`` by running (if you enabled the ``test_matrix_configurator``
-option)::
-
-  tox -e bootstrap
+  cookiecutter gh:Pawamoy/cookiecutter-pydjama
 
 After this you can create the initial repository (make sure you `create <https://github.com/new>`_ an *empty* Github
 project)::
@@ -314,16 +58,17 @@ project)::
   git init .
   git add .
   git commit -m "Initial skel."
-  git remote add origin git@github.com:ionelmc/python-nameless.git
+  git remote add origin git@github.com:username/reponame.git
   git push -u origin master
+  git checkout -b template
+  git push --set-upstream origin template
 
 Then:
 
-* `Enable the repository in your Travis CI account <https://travis-ci.org/profile>`_.
-* `Enable the repository in your Coveralls account <https://coveralls.io/repos/new>`_.
-* `Add the repo to your ReadTheDocs account <https://readthedocs.org/dashboard/import/>`_ + turn on the ReadTheDocs
-  service hook. Don't forget to enable virtualenv and specify ``docs/requirements.txt`` as the requirements file in
-  `Advanced Settings`.
+* Enable the repository in your Travis, Codecov, Coveralls, Landscape, Gitter, ReadTheDocs accounts
+* For ReadTheDocs: turn on the ReadTheDocs service hook.
+  Don't forget to enable virtualenv and specify ``docs/requirements.txt``
+  as the requirements file in ``Advanced Settings``.
 
 Developing the project
 ``````````````````````
@@ -362,90 +107,58 @@ You should read `Semantic Versioning 2.0.0 <http://semver.org/>`_ before bumping
 Building and uploading
 ''''''''''''''''''''''
 
-Before building dists make sure you got a clean build area::
+Store your credentials in a ``.pypirc`` file in your home.
 
-    rm -rf build
-    rm -rf src/*.egg-info
+..
 
-Note:
+  [distutils]
+  index-servers =
+    pypi
+    pypitest
 
-    Dirty ``build`` or ``egg-info`` dirs can cause problems: missing or stale files in the resulting dist or
-    strange and confusing errors. Avoid having them around.
+  [pypi]
+  repository=https://pypi.python.org/pypi
+  username=your_username
+  password=your_password
 
-Then you should check that you got no packaging issues::
+  [pypitest]
+  repository=https://testpypi.python.org/pypi
+  username=your_username
+  password=your_password
 
-    tox -e check
-
-And then you can build the ``sdist``, and if possible, the ``bdist_wheel`` too::
-
-    python setup.py clean --all sdist bdist_wheel
-
-To make a release of the project on PyPI, assuming you got some distributions in ``dist/``, the most simple usage is::
-
-    twine register dist/*
-    twine upload --skip-existing dist/*
-
-Note:
-
-    `twine <https://pypi.python.org/pypi/twine>`_ is a tool that you can use to securely upload your releases to PyPI.
-    You can still use the old ``python setup.py register sdist bdist_wheel upload`` but it's not very secure - your PyPI
-    password will be sent over plaintext.
+Then just run ``./release.sh``. It ``tox -e check`` succeeds, then the script will successively try
+to register then upload on PyPiTest first then PyPi server. If any of these steps fails, the
+script stops.
 
 Changelog
 ---------
 
-See `CHANGELOG.rst <https://github.com/ionelmc/cookiecutter-pylibrary/blob/master/CHANGELOG.rst>`_.
-
-Questions & answers
--------------------
-
-There's no Makefile?
-
-  Sorry, no ``Makefile`` yet. The Tox_ environments stand for whatever you'd have in a ``Makefile``.
-
-Why does ``tox.ini`` have a ``passenv = *``?
-
-  Tox 2.0 changes the way it runs subprocesses - it no longer passes all the environment variables by default. This causes
-  all sorts of problems if you want to run/use any of these with Tox: SSH Agents, Browsers (for Selenium), Appengine SDK,
-  VC Compiler and so on.
-
-  `cookiecutter-pylibrary` errs on the side of convenience here. You can always remove ``passenv = *`` if you like
-  the strictness.
-
-Why is the version stored in several files (``pkg/__init__.py``, ``setup.py``, ``docs/conf.py``)?
-
-  We cannot use a metadata/version file [#]_ because this template is to be used with both distributions of packages (dirs
-  with ``__init__.py``) and modules (simple ``.py`` files that go straigh in ``site-packages``). There's no good place
-  for that extra file if you're distributing modules.
-
-  But this isn't so bad - `bumpversion <https://pypi.python.org/pypi/bumpversion>`_ manages the version string quite
-  neatly.
-
-.. [#] Example, an ``__about__.py`` file.
-
-Not Exactly What You Want?
---------------------------
-
-No way, this is the best. :stuck_out_tongue_winking_eye:
+See `CHANGELOG.rst <https://github.com/Pawamoy/cookiecutter-pydjama/blob/master/CHANGELOG.rst>`_.
 
 
-If you have criticism or suggestions please open up an Issue or Pull Request.
-
-.. _Travis-CI: http://travis-ci.org/
-.. _Tox: http://testrun.org/tox/
-.. _Sphinx: http://sphinx-doc.org/
-.. _Coveralls: https://coveralls.io/
-.. _ReadTheDocs: https://readthedocs.org/
-.. _Setuptools: https://pypi.python.org/pypi/setuptools
-.. _Pytest: http://pytest.org/
 .. _AppVeyor: http://www.appveyor.com/
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _Nose: http://nose.readthedocs.org/
-.. _isort: https://pypi.python.org/pypi/isort
 .. _bumpversion: https://pypi.python.org/pypi/bumpversion
-.. _Codecov: http://codecov.io/
-.. _Landscape: https://landscape.io/
-.. _Scrutinizer: https://scrutinizer-ci.com/
 .. _Codacy: https://codacy.com/
 .. _CodeClimate: https://codeclimate.com/
+.. _Codecov: http://codecov.io/
+.. _`cookiecutter-djangopackage`: https://github.com/pydanny/cookiecutter-djangopackage
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`cookiecutter-pylibrary`: https://github.com/ionelmc/cookiecutter-pylibrary
+.. _`cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+.. _Coveralls: https://coveralls.io/
+.. _`django-fake-model`: https://github.com/erm0l0v/django-fake-model
+.. _Gitter: https://gitter.im
+.. _isort: https://pypi.python.org/pypi/isort
+.. _Landscape: https://landscape.io
+.. _Landscape: https://landscape.io/
+.. _Nose: http://nose.readthedocs.org/
+.. _Pytest: http://pytest.org/
+.. _PyUp: https://pyup.io/
+.. _ReadTheDocs: https://readthedocs.org/
 .. _`requires.io`: https://requires.io/
+.. _Scrutinizer: https://scrutinizer-ci.com/
+.. _Setuptools: https://pypi.python.org/pypi/setuptools
+.. _Sphinx: http://sphinx-doc.org/
+.. _Tox: http://testrun.org/tox/
+.. _Travis-CI: http://travis-ci.org/
+.. _Twine: https://pypi.python.org/pypi/twine

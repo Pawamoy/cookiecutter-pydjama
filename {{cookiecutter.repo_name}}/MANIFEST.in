@@ -25,4 +25,4 @@ include runtests.py
 
 recursive-include requirements *.txt
 
-global-exclude *.py[cod] __pycache__ *.so *.dylib release.sh
+global-exclude *.py[cod] __pycache__ *.so *.dylib release.sh update.sh
