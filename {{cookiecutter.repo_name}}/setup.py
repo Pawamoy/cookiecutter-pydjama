@@ -42,11 +42,11 @@ setup(
         'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
         'Operating System :: Unix',
         'Operating System :: POSIX',
-        'Operating System :: Microsoft :: Windows',
-        'Framework :: Django',{% if '1.8' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
-        # 'Framework :: Django :: 1.8',{% endif %}{% if '1.9' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
-        # 'Framework :: Django :: 1.9',{% endif %}{% if '1.10' in cookiecutter.django_versions and cookiecutter.django|lower == 'yes' %}
-        # 'Framework :: Django :: 1.10',{% endif %}
+        'Operating System :: Microsoft :: Windows',{% if cookiecutter.django|lower == "yes" %}
+        'Framework :: Django',{% if '1.8' in cookiecutter.django_versions %}
+        # 'Framework :: Django :: 1.8',{% endif %}{% if '1.9' in cookiecutter.django_versions %}
+        # 'Framework :: Django :: 1.9',{% endif %}{% if '1.10' in cookiecutter.django_versions %}
+        # 'Framework :: Django :: 1.10',{% endif %}{% endif %}
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
