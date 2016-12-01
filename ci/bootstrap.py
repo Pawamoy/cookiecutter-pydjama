@@ -3,6 +3,7 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 import os
+import shutil
 import sys
 from os.path import exists
 from os.path import join
@@ -42,7 +43,11 @@ if __name__ == "__main__":
     )
     tox_environments = {}
     for name in os.listdir(join(base_path, "ci", "envs")):
-        os.unlink(join(base_path, "ci", "envs", name))
+        path = join(base_path, "ci", "envs", name)
+        if os.path.isdir(path):
+            shutil.rmtree(path)
+        else:
+            os.unlink(path)
 
     for (alias, conf) in matrix.from_file(join(base_path, "ci", "setup.cfg")).items():
         tox_environments[alias] = conf
