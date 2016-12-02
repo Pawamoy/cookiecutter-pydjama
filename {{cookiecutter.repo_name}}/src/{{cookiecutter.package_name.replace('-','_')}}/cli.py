@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Module that contains the command line app.
 
@@ -40,6 +42,8 @@ def main(args=None):
 {% else -%}
 def main(argv=sys.argv):
     """
+    Main function.
+
     Args:
         argv (list): List of arguments
 

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-{%- if cookiecutter.django|lower == "yes" %}
+"""Main test script."""
+
+{% if cookiecutter.django|lower == "yes" %}
 
 from django.test import TestCase
 
@@ -8,6 +10,7 @@ import {{ cookiecutter.package_name }}
 
 
 class MainTestCase(TestCase):
+    """Main Django test case"""
     def setUp(self):
         pass
 
@@ -32,7 +35,8 @@ import {{ cookiecutter.package_name }}
 
 
 def test_main():
-{%- if cookiecutter.command_line_interface|lower == 'click' %}
+    """Main test method."""
+{% if cookiecutter.command_line_interface|lower == 'click' %}
     runner = CliRunner()
     result = runner.invoke(main, [])
 
