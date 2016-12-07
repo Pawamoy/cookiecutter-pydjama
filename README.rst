@@ -109,22 +109,22 @@ Building and uploading
 
 Store your credentials in a ``.pypirc`` file in your home.
 
-..
+.. code::
 
-  [distutils]
-  index-servers =
-    pypi
-    pypitest
+    [distutils]
+    index-servers =
+      pypi
+      pypitest
 
-  [pypi]
-  repository=https://pypi.python.org/pypi
-  username=your_username
-  password=your_password
+    [pypi]
+    repository=https://pypi.python.org/pypi
+    username=your_username
+    password=your_password
 
-  [pypitest]
-  repository=https://testpypi.python.org/pypi
-  username=your_username
-  password=your_password
+    [pypitest]
+    repository=https://testpypi.python.org/pypi
+    username=your_username
+    password=your_password
 
 Then just run ``./release.sh``. It ``tox -e check`` succeeds, then the script will successively try
 to register then upload on PyPiTest first then PyPi server. If any of these steps fails, the
