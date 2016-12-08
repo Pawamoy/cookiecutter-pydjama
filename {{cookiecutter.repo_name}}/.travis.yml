@@ -38,6 +38,7 @@ before_install:
   - uname -a
   - lsb_release -a
   {% if cookiecutter.codecov|lower == 'yes' %}- pip install codecov{% endif %}
+  {% if cookiecutter.coveralls|lower == 'yes' %}- pip install coveralls{% endif %}
   {% if cookiecutter.django|lower == 'yes' %}- pip install django{% endif %}
 install:
   - pip install tox
@@ -60,7 +61,8 @@ notifications:
   email:
     on_success: never
     on_failure: always
-{% if cookiecutter.codecov|lower == 'yes' -%}
+{% if cookiecutter.codecov|lower == 'yes' or cookiecutter.coveralls|lower == 'yes' -%}
 after_success:
-  - codecov
+  {% if cookiecutter.codecov|lower == 'yes' %}- codecov{% endif %}
+  {% if cookiecutter.coveralls|lower == 'yes' %}- coveralls{% endif %}
 {% endif -%}
