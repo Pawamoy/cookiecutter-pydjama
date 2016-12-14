@@ -1,6 +1,0 @@
-default_context:
-  command_line_interface: plain
-  django: 'yes'
-  package_name: nameless
-  repo_name: python-nameless
-  sphinx_theme: sphinx-rtd-theme

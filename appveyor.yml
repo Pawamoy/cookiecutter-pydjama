@@ -5,38 +5,22 @@ matrix:
   fast_finish: true
 environment:
   matrix:
-    - ENV: fnaccents-pnaccents-no-py3doc-django
-    - ENV: fnaccents-pnaccents-no-py3doc-nodj
-    - ENV: fnaccents-pnaccents-no-rtd-django
-    - ENV: fnaccents-pnaccents-no-rtd-nodj
-    - ENV: fndef-pndef-argparse-py3doc-django
-    - ENV: fndef-pndef-argparse-py3doc-nodj
-    - ENV: fndef-pndef-argparse-rtd-django
-    - ENV: fndef-pndef-argparse-rtd-nodj
-    - ENV: fndef-pndef-click-py3doc-django
-    - ENV: fndef-pndef-click-py3doc-nodj
-    - ENV: fndef-pndef-click-rtd-django
-    - ENV: fndef-pndef-click-rtd-nodj
-    - ENV: fndef-pndef-no-py3doc-django
-    - ENV: fndef-pndef-no-py3doc-nodj
-    - ENV: fndef-pndef-no-rtd-django
-    - ENV: fndef-pndef-no-rtd-nodj
-    - ENV: fndef-pndef-plain-py3doc-django
-    - ENV: fndef-pndef-plain-py3doc-nodj
-    - ENV: fndef-pndef-plain-rtd-django
-    - ENV: fndef-pndef-plain-rtd-nodj
-    - ENV: fndef-pnquotes-no-py3doc-django
-    - ENV: fndef-pnquotes-no-py3doc-nodj
-    - ENV: fndef-pnquotes-no-rtd-django
-    - ENV: fndef-pnquotes-no-rtd-nodj
-    - ENV: fnquotes-pndef-no-py3doc-django
-    - ENV: fnquotes-pndef-no-py3doc-nodj
-    - ENV: fnquotes-pndef-no-rtd-django
-    - ENV: fnquotes-pndef-no-rtd-nodj
-    - ENV: fnquotes-pnquotes-no-py3doc-django
-    - ENV: fnquotes-pnquotes-no-py3doc-nodj
-    - ENV: fnquotes-pnquotes-no-rtd-django
-    - ENV: fnquotes-pnquotes-no-rtd-nodj
+    - ENV: fnaccents-pnaccents-no-django
+    - ENV: fnaccents-pnaccents-no-nodj
+    - ENV: fndef-pndef-argparse-django
+    - ENV: fndef-pndef-argparse-nodj
+    - ENV: fndef-pndef-click-django
+    - ENV: fndef-pndef-click-nodj
+    - ENV: fndef-pndef-no-django
+    - ENV: fndef-pndef-no-nodj
+    - ENV: fndef-pndef-plain-django
+    - ENV: fndef-pndef-plain-nodj
+    - ENV: fndef-pnquotes-no-django
+    - ENV: fndef-pnquotes-no-nodj
+    - ENV: fnquotes-pndef-no-django
+    - ENV: fnquotes-pndef-no-nodj
+    - ENV: fnquotes-pnquotes-no-django
+    - ENV: fnquotes-pnquotes-no-nodj
 init:
   - "echo %CTX%"
   - "set"

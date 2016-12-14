@@ -1,7 +1,6 @@
 default_context:
   command_line_interface: 'no'
-  django: 'no'
+  django: 'yes'
+  full_name: Io"'nel
   package_name: nameless
-  project_name: Name"'less
   repo_name: python-nameless
-  sphinx_theme: sphinx-rtd-theme
