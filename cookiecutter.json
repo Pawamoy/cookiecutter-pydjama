@@ -7,7 +7,7 @@
     "repo_name": "no-repo-name",
     "package_name": "no_package_name",
     "distribution_name": "no-distrib-name",
-    "project_short_description": "An example package. Generated with cookiecutter-pylibrary.",
+    "project_short_description": "An example package.",
     "release_date": "today",
     "version": "0.1.0",
     "django": ["no", "yes"],

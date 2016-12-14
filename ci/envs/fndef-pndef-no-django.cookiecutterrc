@@ -1,5 +1,5 @@
 default_context:
   command_line_interface: 'no'
   django: 'yes'
-  package_name: nameless
-  repo_name: python-nameless
+  package_name: no_package_name
+  repo_name: no-repo-name

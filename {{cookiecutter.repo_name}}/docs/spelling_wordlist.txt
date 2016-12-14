@@ -9,3 +9,10 @@ kwargs
 callstack
 Changelog
 Indices
+docstrings
+{{ cookiecutter.distribution_name }}
+{{ cookiecutter.repo_name }}
+{{ cookiecutter.package_name }}
+{{ cookiecutter.github_username }}
+{{ cookiecutter.project_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') }}
+{{ cookiecutter.full_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') }}

@@ -1,6 +1,6 @@
 default_context:
   command_line_interface: 'no'
   django: 'yes'
-  package_name: nameless
+  package_name: no_package_name
   project_name: Name"'less
-  repo_name: python-nameless
+  repo_name: no-repo-name

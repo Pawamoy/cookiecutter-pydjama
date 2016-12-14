@@ -20,8 +20,6 @@ Why does this file exist, and why not put this in __main__?
 import click
 {%- elif cookiecutter.command_line_interface|lower == 'argparse' %}
 import argparse
-{%- else %}
-import sys
 {%- endif %}
 
 
@@ -29,6 +27,7 @@ import sys
 @click.command()
 @click.argument('names', nargs=-1)
 def main(names):
+    """Main click command."""
     click.echo(repr(names))
 {% elif cookiecutter.command_line_interface|lower == 'argparse' -%}
 parser = argparse.ArgumentParser(description='Command description.')
@@ -37,22 +36,12 @@ parser.add_argument('names', metavar='NAME', nargs=argparse.ZERO_OR_MORE,
 
 
 def main(args=None):
+    """Main function."""
     args = parser.parse_args(args=args)
     print(args.names)
 {% else -%}
-def main(argv=sys.argv):
-    """
-    Main function.
-
-    Args:
-        argv (list): List of arguments
-
-    Returns:
-        int: A return code
-
-    Does stuff.
-    """
-
-    print(argv)
+def main(args=None):
+    """Main function."""
+    print(args)
     return 0
 {% endif -%}

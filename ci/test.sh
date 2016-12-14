@@ -7,9 +7,9 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-echo "\033[1;36m================================\033[0m"
-echo "\033[1;36m= Testing: $1\033[0m"
-echo "\033[1;36m================================\033[0m"
+echo "\033[1;36m=======================================================\033[0m"
+echo "\033[1;36mTesting: $1\033[0m"
+echo "\033[1;36m=======================================================\033[0m"
 
 # Using tox through tox with long env names results in too long shebang issue in pip script.
 # See https://github.com/tox-dev/tox/issues/66.
@@ -23,15 +23,15 @@ echo "\033[1;36m================================\033[0m"
 # virtualenv/pip (the one who creates the pip script) themselves.
 
 workdir=".tox/$(echo $1 | shasum | cut -c-6)"
-rm -rf "${workdir}/python-nameless"
+rm -rf "${workdir}/no-repo-name"
 config_file="ci/envs/${1#*-}.cookiecutterrc"
 cookiecutter --no-input --config-file "${config_file}" -o "${workdir}" .
-cd "${workdir}/python-nameless"
-git init .
-git add -A .
-git commit -m "initial."
+cd "${workdir}/no-repo-name"
+git init . >/dev/null 2>&1
+git add -A . >/dev/null 2>&1
+git commit -m "initial." >/dev/null 2>&1
 bumpversion patch
 bumpversion minor
 bumpversion major
 sed -i 's/sphinx-build -b linkcheck/#/' tox.ini
-tox
+tox -e check,docs

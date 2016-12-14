@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from __future__ import absolute_import, print_function, unicode_literals
 
 import os
@@ -51,13 +52,15 @@ if __name__ == "__main__":
 
     for (alias, conf) in matrix.from_file(join(base_path, "ci", "setup.cfg")).items():
         tox_environments[alias] = conf
-        conf['repo_name'] = 'python-nameless'
-        conf['package_name'] = 'nameless'
+        conf['repo_name'] = 'no-repo-name'
+        conf['package_name'] = 'no_package_name'
         with open(join(base_path, "ci", "envs", alias + '.cookiecutterrc'), "w") as fh:
-            fh.write(yaml.safe_dump(
-                dict(default_context={k: v for k, v in conf.items() if v}),
-                default_flow_style=False
-            ))
+            yaml.safe_dump(
+                dict(default_context={k: v for k, v in conf.items() if v}), fh,
+                default_flow_style=False,
+                encoding='utf-8',
+                allow_unicode=True
+            )
     for name in os.listdir(join(base_path, "ci", "templates")):
         with open(join(base_path, name), "w") as fh:
             fh.write(jinja.get_template(name).render(tox_environments=tox_environments))

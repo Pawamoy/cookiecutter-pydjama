@@ -40,7 +40,7 @@ import {{ cookiecutter.package_name }}
 
 def test_main():
     """Main test method."""
-{% if cookiecutter.command_line_interface|lower == 'click' %}
+{%- if cookiecutter.command_line_interface|lower == 'click' %}
     runner = CliRunner()
     result = runner.invoke(main, [])
 
