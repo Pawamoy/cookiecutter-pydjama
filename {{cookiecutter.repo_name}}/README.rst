@@ -72,7 +72,7 @@
     :alt: Code Quality Status
 {% endif %}
 {%- if cookiecutter.codacy|lower == 'yes' %}
-.. |codacy| image:: https://img.shields.io/codacy/REPLACE_WITH_PROJECT_ID.svg?style=flat
+.. |codacy| image:: https://api.codacy.com/project/badge/Grade/REPLACE_WITH_PROJECT_ID
     :target: https://www.codacy.com/app/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
     :alt: Codacy Code Quality Status
 {% endif %}
