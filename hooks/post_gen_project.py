@@ -27,6 +27,7 @@ if __name__ == "__main__":
     today = datetime.date.today()
     replace_contents('CHANGELOG.rst', '<TODAY>', today.strftime("%Y-%m-%d"))
     replace_contents('docs/conf.py', '<YEAR>', str(today.year))
+    replace_contents('LICENSE', '<YEAR>', str(today.year))
 
 {%- if cookiecutter.command_line_interface|lower == 'no' %}
     os.unlink(join('src', '{{ cookiecutter.package_name|replace('-', '_') }}', '__main__.py'))
