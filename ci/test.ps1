@@ -17,5 +17,5 @@ git init .
 git config core.safecrlf false
 git add -A .
 git commit -m "initial."
-(Get-Content -Path "tox.ini") -replace "sphinx-build -b linkcheck","#" | Set-Content -Path "tox.ini"
+(Get-Content -Path "tox.ini") -replace "sphinx-build -b linkcheck","- sphinx-build -b linkcheck" | Set-Content -Path "tox.ini"
 tox --skip-missing-interpreters

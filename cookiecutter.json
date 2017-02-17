@@ -2,6 +2,7 @@
     "full_name": "Timothee Mazzucotelli",
     "email": "timothee.mazzucotelli@gmail.com",
     "website": "http://pawamoy.github.io/",
+
     "github_username": "Pawamoy",
     "project_name": "No Project Name",
     "repo_name": "no-repo-name",
@@ -10,11 +11,15 @@
     "project_short_description": "An example package.",
     "release_date": "today",
     "version": "0.1.0",
+
+    "python_versions": "2.7,3.4,3.5,3.6,3.7-dev,pypy",
     "django": ["no", "yes"],
     "django_versions": "1.8,1.9,1.10",
     "django_fake_model": ["no", "yes"],
+
     "command_line_interface": ["no", "plain", "argparse", "click"],
     "command_line_interface_bin_name": "{{ cookiecutter.distribution_name }}",
+
     "coveralls": ["no", "yes"],
     "codecov": ["yes", "no"],
     "landscape": ["yes", "no"],

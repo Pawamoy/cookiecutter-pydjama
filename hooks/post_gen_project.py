@@ -2,10 +2,8 @@ from __future__ import print_function
 
 import datetime
 import os
-import shutil
-import subprocess
-import sys
 from os.path import join
+from collections import OrderedDict
 
 try:
     from click.termui import secho
@@ -15,6 +13,63 @@ else:
     def warn(text):
         for line in text.splitlines():
             secho(line, fg="white", bg="red", bold=True)
+
+
+try:
+    import yaml
+
+
+    def ordered_load(stream, Loader=yaml.SafeLoader, object_pairs_hook=OrderedDict):
+        class OrderedLoader(Loader):
+            pass
+
+        def construct_mapping(loader, node):
+            loader.flatten_mapping(node)
+            return object_pairs_hook(loader.construct_pairs(node))
+
+        OrderedLoader.add_constructor(
+            yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+            construct_mapping)
+        return yaml.load(stream, OrderedLoader)
+
+
+    def ordered_dump(data, stream=None, Dumper=yaml.SafeDumper, **kwds):
+        class OrderedDumper(Dumper):
+            pass
+
+        def _dict_representer(dumper, data):
+            return dumper.represent_mapping(
+                yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+                data.items())
+
+        OrderedDumper.add_representer(OrderedDict, _dict_representer)
+        return yaml.dump(data, stream, OrderedDumper, **kwds)
+
+
+    def lint_yaml(yaml_file):
+        with open(yaml_file) as f:
+            contents = ordered_load(f)
+        with open(yaml_file, 'w') as f:
+            ordered_dump(contents, f)
+
+except ImportError:
+    def lint_yaml(yaml_file):
+        print('Yaml is not available, not linting %s' % yaml_file)
+
+
+def lint_ini(ini_file):
+    try:
+        from configparser import ConfigParser
+    except ImportError:
+        try:
+            from ConfigParser import ConfigParser
+        except ImportError:
+            print('ConfigParser is not available, not linting %s' % ini_file)
+            return
+    config = ConfigParser()
+    config.read(ini_file)
+    with open(ini_file, 'w') as f:
+        config.write(f)
 
 
 def replace_contents(filename, what, replacement):
@@ -29,6 +84,11 @@ if __name__ == "__main__":
     replace_contents('docs/conf.py', '<YEAR>', str(today.year))
     replace_contents('LICENSE', '<YEAR>', str(today.year))
 
+    lint_ini('tox.ini')
+    replace_contents('tox.ini', '\t', '    ')
+    lint_ini('setup.cfg')
+    replace_contents('setup.cfg', '\t', '    ')
+
 {%- if cookiecutter.command_line_interface|lower == 'no' %}
     os.unlink(join('src', '{{ cookiecutter.package_name|replace('-', '_') }}', '__main__.py'))
     os.unlink(join('src', '{{ cookiecutter.package_name|replace('-', '_') }}', 'cli.py'))
@@ -40,10 +100,14 @@ if __name__ == "__main__":
 
 {%- if cookiecutter.appveyor|lower == 'no' %}
     os.unlink('appveyor.yml')
+{% else %}
+    lint_yaml('appveyor.yml')
 {% endif %}
 
 {%- if cookiecutter.travis|lower == 'no' %}
     os.unlink('.travis.yml')
+{% else %}
+    lint_yaml('.travis.yml')
 {% endif %}
 
     print("""

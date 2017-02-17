@@ -1,69 +1,65 @@
-language: python
-python: '3.5'
 sudo: false
-env:
-  - TOXENV=check
-{% for env in ['py27', 'py34', 'py35', 'pypy'] %}
-{% if cookiecutter.django|lower == "yes" %}
-  {%- if '1.8' in cookiecutter.django_versions %}
-  - TOXENV={{ env }}-django-18
-  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
-  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}{% endif %}
-  {%- if '1.9' in cookiecutter.django_versions %}
-  - TOXENV={{ env }}-django-19
-  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
-  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}{% endif %}
-  {%- if '1.10' in cookiecutter.django_versions %}
-  - TOXENV={{ env }}-django-110
-  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
-  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}{% endif %}
-  {%- if 'master' in cookiecutter.django_versions %}
-  - TOXENV={{ env }}-django-master
-  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
-  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}{% endif %}
-{% else %}
-  - TOXENV={{ env }}
-  {%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}
-  {%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
-{% endif %}
-{%- endfor %}
-matrix:
-  fast_finish: true{% if 'master' in cookiecutter.django_versions %}
-  allow_failures:
-    - env: TOX_ENV=py27-django-master
-    - env: TOX_ENV=py34-django-master
-    - env: TOX_ENV=py35-django-master{% endif %}
-before_install:
-  - python --version
-  - uname -a
-  - lsb_release -a
-  {% if cookiecutter.codecov|lower == 'yes' %}- pip install codecov{% endif %}
-  {% if cookiecutter.coveralls|lower == 'yes' %}- pip install coveralls{% endif %}
-  {% if cookiecutter.django|lower == 'yes' %}- pip install django{% endif %}
-install:
-  - pip install tox
-  - pip install -r requirements/ci.txt
-  - virtualenv --version
-  - easy_install --version
-  - pip --version
-  - tox --version
+language: python
+
+
 branches:
   only:
     - master
-script:
-  - tox -v
-after_failure:
-  - more .tox/log/* | cat
-  - more .tox/*/log/* | cat
-before_cache:
-  - rm -rf $HOME/.cache/pip/log
+
+
 cache:
   directories:
-    - $HOME/.cache/pip
-notifications:
-  email:
-    on_success: never
-    on_failure: always
+    - "$HOME/.cache/pip"
+
+
+matrix:
+  include:
+    - python: '3.5'
+      env: TOX_ENV=check
+    - python: '3.5'
+      env: TOX_ENV=docs
+    - python: '3.5'
+      env: TOX_ENV=linkcheck
+    {% for py in ["2.6", "2.7", "3.2", "3.3", "3.4", "3.5", "3.5-dev", "3.6", "3.6-dev", "3.7-dev"] %}
+      {% if py in cookiecutter.python_versions.split(',') %}
+        {% if cookiecutter.django|lower == "yes" %}
+          {% for dj in cookiecutter.django_versions.split(',') %}
+    - python: '{{ py }}'
+      env: TOX_ENV=py{{ py|replace(".", "") }}-django{{ dj|replace(".", "") }}
+          {% endfor %}
+        {% else %}
+    - python: '{{ py }}'
+      env: TOX_ENV=py{{ py|replace(".", "") }}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if "pypy" in cookiecutter.python_versions.split(',') %}
+      {% if cookiecutter.django|lower == "yes" %}
+        {% for dj in cookiecutter.django_versions.split(',') %}
+    - python: 'pypy'
+      env: TOX_ENV=pypy-django{{ dj|replace(".", "") }}
+        {% endfor %}
+      {% else %}
+    - python: 'pypy'
+      env: TOX_ENV=pypy
+      {% endif %}
+    {% endif %}
+  fast_finish: true
+  allow_failures:
+    - python: '3.5'
+      env: TOX_ENV=linkcheck
+    {% for py in ["3.5-dev", "3.6-dev", "3.7-dev"] %}
+      {% if py in cookiecutter.python_versions.split(',') %}
+    - python: {{ py }}
+      {% endif %}
+    {% endfor %}
+
+
+
+install:
+  - pip install -r requirements/ci.txt
+script:
+  - tox -e ${TOX_ENV}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
 {% if cookiecutter.codecov|lower == 'yes' or cookiecutter.coveralls|lower == 'yes' -%}
 after_success:
   {% if cookiecutter.codecov|lower == 'yes' %}- codecov{% endif %}

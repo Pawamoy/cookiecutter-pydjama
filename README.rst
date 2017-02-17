@@ -11,19 +11,21 @@ Features
 --------
 
 * Support for Django_, tests with `django-fake-model`_.
-* Mozilla Public License 2.0.
-* Tox_ for managing test environments for Python 2.7, 3.3, PyPy etc.
-* Pytest_ for testing Python 2.7, 3.3, PyPy etc.
-* Travis-CI_ and AppVeyor_ for continuous testing.
+* `ISC License`_.
+* Tox_ for managing test environments for Python 2.7, 3.6, PyPy etc.
+* Pytest_ for testing Python 2.7, 3.6, PyPy etc.
+* Travis-CI_ [and AppVeyor_ (outdated, need fix)] for continuous testing.
 * Coveralls_ or Codecov_ for coverage tracking (using Tox_).
-* Documentation with Sphinx_, ready for ReadTheDocs_ (soon).
+* Documentation with Sphinx_, ready for ReadTheDocs_.
 * Configurations for isort_,  bumpversion_, yapf_ and prospector_.
 * Packaging and code quality checks. This template comes with a tox environment (``check``) that will:
 
+  * Check if your ``setup.py`` is valid.
   * Check if your ``README.rst`` is valid.
   * Check if the ``MANIFEST.in`` has any issues.
-  * Run ``flake8`` (a combo of PEP8, pyflakes and McCabe checks)
-  * Run ``prospector`` (landscape tool, soon).
+  * Run ``bandit`` (a security issue checker for python code).
+  * Run ``safety`` (a PyUp_ tool to check your dependencies).
+  * Run ``prospector`` (Landscape_ 's tool for static code analysis).
 
 * Badges for everything in README.rst, including PyUp_, Landscape_ and Gitter_.
 * Script to easily release code to PyPiTest and PyPi.
@@ -146,12 +148,14 @@ See `CHANGELOG.rst <https://github.com/Pawamoy/cookiecutter-pydjama/blob/master/
 .. _`cookiecutter-pylibrary`: https://github.com/ionelmc/cookiecutter-pylibrary
 .. _`cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
 .. _Coveralls: https://coveralls.io/
+.. _Django: https://www.djangoproject.com/
 .. _`django-fake-model`: https://github.com/erm0l0v/django-fake-model
 .. _Gitter: https://gitter.im
+.. _`ISC License`: https://opensource.org/licenses/ISC
 .. _isort: https://pypi.python.org/pypi/isort
 .. _Landscape: https://landscape.io
-.. _Landscape: https://landscape.io/
 .. _Nose: http://nose.readthedocs.org/
+.. _prospector: https://github.com/landscapeio/prospector
 .. _Pytest: http://pytest.org/
 .. _PyUp: https://pyup.io/
 .. _ReadTheDocs: https://readthedocs.org/
