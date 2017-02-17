@@ -56,12 +56,16 @@ setup(
         # 'Framework :: Django :: 1.8',{% endif %}{% if '1.9' in cookiecutter.django_versions %}
         # 'Framework :: Django :: 1.9',{% endif %}{% if '1.10' in cookiecutter.django_versions %}
         # 'Framework :: Django :: 1.10',{% endif %}{% endif %}
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: Implementation :: PyPy',
+        'Programming Language :: Python',{% if '2.6' in cookiecutter.python_versions %}
+        'Programming Language :: Python :: 2.6',{% endif %}{% if '2.7' in cookiecutter.python_versions %}
+        'Programming Language :: Python :: 2.7',{% endif %}
+        'Programming Language :: Python :: 3',{% if '3.2' in cookiecutter.python_versions %}
+        'Programming Language :: Python :: 3.2',{% endif %}{% if '3.3' in cookiecutter.python_versions %}
+        'Programming Language :: Python :: 3.3',{% endif %}{% if '3.4' in cookiecutter.python_versions %}
+        'Programming Language :: Python :: 3.4',{% endif %}{% if '3.5' in cookiecutter.python_versions %}
+        'Programming Language :: Python :: 3.5',{% endif %}{% if '3.6' in cookiecutter.python_versions %}
+        'Programming Language :: Python :: 3.6',{% endif %}{% if 'pypy' in cookiecutter.python_versions %}
+        'Programming Language :: Python :: Implementation :: PyPy',{% endif %}
         'Topic :: Utilities',
     ],
     keywords=[
