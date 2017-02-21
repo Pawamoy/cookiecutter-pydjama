@@ -63,6 +63,7 @@ before_install:
   - pip --version
   - uname -a
   - lsb_release -a
+  - sudo apt-get update
   - sudo apt-get install enchant
 install:
   - mkdir -p ~/.pip
