@@ -25,11 +25,11 @@ matrix:
         {% if cookiecutter.django|lower == "yes" %}
           {% for dj in cookiecutter.django_versions.split(',') %}
     - python: '{{ py }}'
-      env: TOX_ENV=py{{ py|replace(".", "") }}-django{{ dj|replace(".", "") }}
+      env: TOX_ENV=py{{ py|replace(".", "") }}-django{{ dj|replace(".", "") }}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
           {% endfor %}
         {% else %}
     - python: '{{ py }}'
-      env: TOX_ENV=py{{ py|replace(".", "") }}
+      env: TOX_ENV=py{{ py|replace(".", "") }}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
         {% endif %}
       {% endif %}
     {% endfor %}
@@ -37,11 +37,11 @@ matrix:
       {% if cookiecutter.django|lower == "yes" %}
         {% for dj in cookiecutter.django_versions.split(',') %}
     - python: 'pypy'
-      env: TOX_ENV=pypy-django{{ dj|replace(".", "") }}
+      env: TOX_ENV=pypy-django{{ dj|replace(".", "") }}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
         {% endfor %}
       {% else %}
     - python: 'pypy'
-      env: TOX_ENV=pypy
+      env: TOX_ENV=pypy{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
       {% endif %}
     {% endif %}
   fast_finish: true
@@ -59,7 +59,7 @@ matrix:
 install:
   - pip install -r requirements/ci.txt
 script:
-  - tox -e ${TOX_ENV}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
+  - tox -e ${TOX_ENV}
 {% if cookiecutter.codecov|lower == 'yes' or cookiecutter.coveralls|lower == 'yes' -%}
 after_success:
   {% if cookiecutter.codecov|lower == 'yes' %}- codecov{% endif %}
