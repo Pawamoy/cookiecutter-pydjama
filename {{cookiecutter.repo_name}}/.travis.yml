@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: python
 
 
@@ -57,6 +57,8 @@ matrix:
 
 
 install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y enchant
   - pip install -r requirements/ci.txt
 script:
   - tox -e ${TOX_ENV}
