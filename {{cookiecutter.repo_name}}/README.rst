@@ -11,8 +11,8 @@
 {%- if cookiecutter.appveyor|lower == 'yes' %}
 |appveyor|
 {%- endif %}
-{%- if cookiecutter.requiresio|lower == 'yes' %}
-|requires|
+{%- if cookiecutter.codacy|lower == 'yes' %}
+|codacy|
 {%- endif %}
 {%- if cookiecutter.coveralls|lower == 'yes' %}
 |coveralls|
@@ -23,12 +23,6 @@
 {%- if cookiecutter.landscape|lower == 'yes' %}
 |landscape|
 {%- endif %}
-{%- if cookiecutter.scrutinizer|lower == 'yes' %}
-|scrutinizer|
-{%- endif %}
-{%- if cookiecutter.codacy|lower == 'yes' %}
-|codacy|
-{%- endif %}
 {%- if cookiecutter.codeclimate|lower == 'yes' %}
 |codeclimate|
 {%- endif %}
@@ -36,6 +30,9 @@
 |wheel|
 {%- if cookiecutter.pyup|lower == 'yes' %}
 |pyup|
+{%- endif %}
+{%- if cookiecutter.requiresio|lower == 'yes' %}
+|requires|
 {%- endif %}
 {%- if cookiecutter.gitter|lower == 'yes' %}
 |gitter|
@@ -81,11 +78,6 @@
     :target: https://codeclimate.com/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
     :alt: CodeClimate Quality Status
 {% endif %}
-{% if cookiecutter.scrutinizer|lower == 'yes' %}
-.. |scrutinizer| image:: https://img.shields.io/scrutinizer/g/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/master.svg?style=flat
-    :alt: Scrutinizer Status
-    :target: https://scrutinizer-ci.com/g/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
-{% endif %}
 {%- if cookiecutter.pyup|lower == 'yes' %}
 .. |pyup| image:: https://pyup.io/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/shield.svg
     :target: https://pyup.io/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/
@@ -126,7 +118,8 @@ Installation
 Documentation
 =============
 
-https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name|replace('.', '') }}/wiki
+http://{{ cookiecutter.repo_name|replace('.', '') }}.readthedocs.io/en/latest/
+{# https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name|replace('.', '') }}/wiki #}
 
 Development
 ===========

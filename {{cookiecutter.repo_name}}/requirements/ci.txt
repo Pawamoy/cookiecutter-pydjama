@@ -1,4 +1,2 @@
 -r base.txt
 tox
-{% if cookiecutter.codecov|lower == 'yes' %}codecov{% endif %}
-{% if cookiecutter.coveralls|lower == 'yes' %}coveralls{% endif %}
