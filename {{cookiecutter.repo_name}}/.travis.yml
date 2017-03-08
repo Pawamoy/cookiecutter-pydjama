@@ -60,9 +60,3 @@ install:
   - pip install -r requirements/ci.txt
 script:
   - tox -e ${TOX_ENV}
-{% if cookiecutter.codecov|lower == 'yes' or cookiecutter.coveralls|lower == 'yes' or cookiecutter.codacy|lower == 'yes' -%}
-after_success:
-  {% if cookiecutter.codacy|lower == 'yes' %}- tox -e codacy{% endif %}
-  {% if cookiecutter.codecov|lower == 'yes' %}- tox -e codecov{% endif %}
-  {% if cookiecutter.coveralls|lower == 'yes' %}- tox -e coveralls{% endif %}
-{% endif -%}
