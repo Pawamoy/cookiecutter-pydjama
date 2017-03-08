@@ -12,7 +12,8 @@
 |appveyor|
 {%- endif %}
 {%- if cookiecutter.codacy|lower == 'yes' %}
-|codacy|
+|codacy-grade|
+|codacy-coverage|
 {%- endif %}
 {%- if cookiecutter.coveralls|lower == 'yes' %}
 |coveralls|
@@ -69,9 +70,12 @@
     :alt: Code Quality Status
 {% endif %}
 {%- if cookiecutter.codacy|lower == 'yes' %}
-.. |codacy| image:: https://api.codacy.com/project/badge/Grade/REPLACE_WITH_PROJECT_ID
-    :target: https://www.codacy.com/app/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/dashboard
+.. |codacy-grade| image:: https://api.codacy.com/project/badge/Grade/REPLACE_WITH_PROJECT_ID
+    :target: https://www.codacy.com/app/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}?utm_source=github.com&amp;utm_medium=referral&amp;utm_content={{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}&amp;utm_campaign=Badge_Grade
     :alt: Codacy Code Quality Status
+.. |codacy-coverage| image:: https://api.codacy.com/project/badge/Coverage/338f6c7d06664cae86d66eb289a5e424
+    :target: https://www.codacy.com/app/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}?utm_source=github.com&amp;utm_medium=referral&amp;utm_content={{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}&amp;utm_campaign=Badge_Coverage
+    :alt: Codacy Code Coverage
 {% endif %}
 {%- if cookiecutter.codeclimate|lower == 'yes' %}
 .. |codeclimate| image:: https://codeclimate.com/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/badges/gpa.svg
