@@ -70,7 +70,7 @@
 {% endif %}
 {%- if cookiecutter.codacy|lower == 'yes' %}
 .. |codacy| image:: https://api.codacy.com/project/badge/Grade/REPLACE_WITH_PROJECT_ID
-    :target: https://www.codacy.com/app/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
+    :target: https://www.codacy.com/app/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/dashboard
     :alt: Codacy Code Quality Status
 {% endif %}
 {%- if cookiecutter.codeclimate|lower == 'yes' %}
@@ -79,8 +79,8 @@
     :alt: CodeClimate Quality Status
 {% endif %}
 {%- if cookiecutter.pyup|lower == 'yes' %}
-.. |pyup| image:: https://pyup.io/account/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/shield.svg
-    :target: https://pyup.io/account/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/
+.. |pyup| image:: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/shield.svg
+    :target: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
     :alt: Updates
 {% endif %}
 {%- if cookiecutter.gitter|lower == 'yes' %}
