@@ -12,8 +12,8 @@
 |appveyor|
 {%- endif %}
 {%- if cookiecutter.codacy|lower == 'yes' %}
-|codacy-grade|
-|codacy-coverage|
+|codacygrade|
+|codacycoverage|
 {%- endif %}
 {%- if cookiecutter.coveralls|lower == 'yes' %}
 |coveralls|
@@ -70,10 +70,11 @@
     :alt: Code Quality Status
 {% endif %}
 {%- if cookiecutter.codacy|lower == 'yes' %}
-.. |codacy-grade| image:: https://api.codacy.com/project/badge/Grade/REPLACE_WITH_PROJECT_ID
+.. |codacygrade| image:: https://api.codacy.com/project/badge/Grade/REPLACE_WITH_PROJECT_ID
     :target: https://www.codacy.com/app/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/dashboard
     :alt: Codacy Code Quality Status
-.. |codacy-coverage| image:: https://api.codacy.com/project/badge/Coverage/338f6c7d06664cae86d66eb289a5e424
+
+.. |codacycoverage| image:: https://api.codacy.com/project/badge/Coverage/REPLACE_WITH_PROJECT_ID
     :target: https://www.codacy.com/app/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/dashboard
     :alt: Codacy Code Coverage
 {% endif %}
@@ -87,11 +88,6 @@
     :target: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
     :alt: Updates
 {% endif %}
-{%- if cookiecutter.gitter|lower == 'yes' %}
-.. |gitter| image:: https://badges.gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg
-    :target: https://gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
-    :alt: Join the chat at https://gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
-{% endif %}
 .. |version| image:: https://img.shields.io/pypi/v/{{ cookiecutter.distribution_name }}.svg?style=flat
     :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
     :alt: PyPI Package latest release
@@ -99,6 +95,11 @@
 .. |wheel| image:: https://img.shields.io/pypi/wheel/{{ cookiecutter.distribution_name }}.svg?style=flat
     :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
     :alt: PyPI Wheel
+{%- if cookiecutter.gitter|lower == 'yes' %}
+.. |gitter| image:: https://badges.gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg
+    :target: https://gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+    :alt: Join the chat at https://gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+{% endif %}
 
 
 .. end-badges
@@ -122,7 +123,7 @@ Installation
 Documentation
 =============
 
-http://{{ cookiecutter.repo_name|replace('.', '') }}.readthedocs.io/en/latest/
+http://{{ cookiecutter.project_name }}.readthedocs.io/en/latest/
 {# https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name|replace('.', '') }}/wiki #}
 
 Development
