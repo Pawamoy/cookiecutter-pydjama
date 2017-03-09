@@ -87,8 +87,8 @@
     :target: https://scrutinizer-ci.com/g/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
 {% endif %}
 {%- if cookiecutter.pyup|lower == 'yes' %}
-.. |pyup| image:: https://pyup.io/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/shield.svg
-    :target: https://pyup.io/repos/github/{{ cookiecutter.github_username|lower }}/{{ cookiecutter.repo_name }}/
+.. |pyup| image:: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/shield.svg
+    :target: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
     :alt: Updates
 {% endif %}
 {%- if cookiecutter.gitter|lower == 'yes' %}
