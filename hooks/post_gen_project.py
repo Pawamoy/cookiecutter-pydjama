@@ -16,10 +16,6 @@ else:
 
 
 try:
-    import sys
-
-    sys.path.append('/usr/local/lib/python3.6/site-packages')
-
     import yaml
 
 
@@ -112,6 +108,10 @@ if __name__ == "__main__":
     os.unlink('.travis.yml')
 {% else %}
     lint_yaml('.travis.yml')
+{% endif %}
+
+{%- if cookiecutter.pyup|lower == 'no' %}
+    os.unlink('.pyup.yml')
 {% endif %}
 
     print("""

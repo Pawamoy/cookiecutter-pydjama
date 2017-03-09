@@ -20,15 +20,14 @@
     "command_line_interface": ["no", "plain", "argparse", "click"],
     "command_line_interface_bin_name": "{{ cookiecutter.distribution_name }}",
 
-    "coveralls": ["no", "yes"],
-    "codecov": ["yes", "no"],
-    "landscape": ["yes", "no"],
-    "scrutinizer": ["no", "yes"],
-    "codacy" : ["no", "yes"],
-    "codeclimate" : ["no", "yes"],
-    "travis": ["yes", "no"],
     "appveyor": ["no", "yes"],
-    "requiresio": ["no", "yes"],
+    "codacy" : ["yes", "no"],
+    "codeclimate" : ["no", "yes"],
+    "codecov": ["no", "yes"],
+    "coveralls": ["no", "yes"],
     "gitter": ["yes", "no"],
-    "pyup": ["yes", "no"]
+    "landscape": ["no", "yes"],
+    "pyup": ["yes", "no"],
+    "requiresio": ["no", "yes"],
+    "travis": ["yes", "no"]
 }
