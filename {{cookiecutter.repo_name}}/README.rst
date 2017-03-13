@@ -123,8 +123,7 @@ Installation
 Documentation
 =============
 
-http://{{ cookiecutter.project_name }}.readthedocs.io/en/latest/
-{# https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name|replace('.', '') }}/wiki #}
+http://{{ cookiecutter.project_name|lower|replace(' ', '-') }}.readthedocs.io/
 
 Development
 ===========
