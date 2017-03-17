@@ -1,3 +1,4 @@
 sphinx
 sphinx-rtd-theme
+{% if cookiecutter.django|lower == "yes" %}Django{% endif %}
 -e .

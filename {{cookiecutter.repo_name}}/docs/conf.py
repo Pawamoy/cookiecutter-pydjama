@@ -5,9 +5,9 @@
 from __future__ import unicode_literals
 
 import os
-import sys
 
-{% if cookiecutter.django|lower == 'yes' -%}
+{% if cookiecutter.django|lower == "yes" -%}
+import sys
 import django
 from django.conf import settings
 

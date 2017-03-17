@@ -123,7 +123,9 @@ Installation
 Documentation
 =============
 
-http://{{ cookiecutter.project_name|lower|replace(' ', '-') }}.readthedocs.io/
+`On ReadTheDocs`_
+
+.. _`On ReadTheDocs`: http://{{ cookiecutter.project_name|lower|replace(' ', '-') }}.readthedocs.io/
 
 Development
 ===========

@@ -14,5 +14,5 @@ docstrings
 {{ cookiecutter.repo_name }}
 {{ cookiecutter.package_name }}
 {{ cookiecutter.github_username }}
-{{ cookiecutter.project_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') }}
+{{ cookiecutter.project_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') | lower }}
 {{ cookiecutter.full_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') }}
