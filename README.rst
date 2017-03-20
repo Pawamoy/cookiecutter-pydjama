@@ -37,9 +37,9 @@ Requirements
 
 Projects using this template have these minimal dependencies:
 
-* Cookiecutter_ - just for creating the project
-* Tox_ - for running the tests
-* Setuptools_ - for building the package, wheels etc.
+* Cookiecutter_ for creating the project
+* Tox_ for running the tests
+* Setuptools_ for building the package, wheels etc.
 * Twine_ to register and upload the code to PyPiTest and PyPi.
 
 ::

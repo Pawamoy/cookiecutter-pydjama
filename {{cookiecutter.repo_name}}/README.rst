@@ -125,7 +125,7 @@ Documentation
 
 `On ReadTheDocs`_
 
-.. _`On ReadTheDocs`: http://{{ cookiecutter.project_name|lower|replace(' ', '-') }}.readthedocs.io/
+.. _`On ReadTheDocs`: http://REPLACE_WITH_RTD_SLUG.readthedocs.io/
 
 Development
 ===========
