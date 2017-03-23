@@ -16,3 +16,5 @@ docstrings
 {{ cookiecutter.github_username }}
 {{ cookiecutter.project_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') | lower }}
 {{ cookiecutter.full_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') }}
+{% if cookiecutter.django|lower == "yes" %}Django
+django{% endif %}

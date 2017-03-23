@@ -95,7 +95,7 @@
 .. |wheel| image:: https://img.shields.io/pypi/wheel/{{ cookiecutter.distribution_name }}.svg?style=flat
     :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
     :alt: PyPI Wheel
-{%- if cookiecutter.gitter|lower == 'yes' %}
+{% if cookiecutter.gitter|lower == 'yes' %}
 .. |gitter| image:: https://badges.gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg
     :target: https://gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
     :alt: Join the chat at https://gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
@@ -125,7 +125,7 @@ Documentation
 
 `On ReadTheDocs`_
 
-.. _`On ReadTheDocs`: http://REPLACE_WITH_RTD_SLUG.readthedocs.io/
+.. _`On ReadTheDocs`: http://{{ cookiecutter.repo_name|lower }}.readthedocs.io/
 
 Development
 ===========
