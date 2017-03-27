@@ -30,7 +30,7 @@ Features
 * Badges for everything in README.rst, including PyUp_, Landscape_ and Gitter_.
 * Script to easily release code to PyPiTest and PyPi.
 * Script to easily update your generated project when the cookiecutter changes. To enable this,
-  you wil need to create a ``template`` branch in the repository.
+  you wil need to create a ``cookiecutter`` branch in the repository.
 
 Requirements
 ------------
@@ -62,8 +62,8 @@ project)::
   git commit -m "Initial skel."
   git remote add origin git@github.com:username/reponame.git
   git push -u origin master
-  git checkout -b template
-  git push --set-upstream origin template
+  git checkout -b cookiecutter
+  git push --set-upstream origin cookiecutter
 
 Then:
 

@@ -132,14 +132,14 @@ To get started run these:
   git commit -m "Add initial project skeleton."
   git remote add origin git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.git
   git push -u origin master
-  git checkout -b template  # enable updating from cookiecutter
-  git push --set-upstream origin template
-
-Remember to enable continuous integration, documentation generation
-and online code health check before your first push ;)
+  git checkout -b cookiecutter  # enable updating from cookiecutter
+  git push --set-upstream origin cookiecutter
 
 Use './update.sh . gh:Pawamoy/cookiecutter-pydjama' to update your project
 with the last changes of pydjama.
+
+Remember to enable continuous integration, documentation generation
+and online code health check before your first push ;)
 """)
 
     command_line_interface_bin_name = '{{ cookiecutter.command_line_interface_bin_name }}'
