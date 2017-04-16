@@ -8,9 +8,6 @@
 {% if cookiecutter.travis|lower == 'yes' %}
 |travis|
 {%- endif %}
-{%- if cookiecutter.appveyor|lower == 'yes' %}
-|appveyor|
-{%- endif %}
 {%- if cookiecutter.codacy|lower == 'yes' %}
 |codacygrade|
 |codacycoverage|
@@ -43,11 +40,6 @@
 .. |travis| image:: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg?branch=master
     :target: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
     :alt: Travis-CI Build Status
-{% endif %}
-{%- if cookiecutter.appveyor|lower == 'yes' %}
-.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}?branch=master&svg=true
-    :target: https://ci.appveyor.com/project/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
-    :alt: AppVeyor Build Status
 {% endif %}
 {%- if cookiecutter.requiresio|lower == 'yes' %}
 .. |requires| image:: https://requires.io/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/requirements.svg?branch=master

@@ -3,7 +3,6 @@
 """Main test script."""
 
 {% if cookiecutter.django|lower == "yes" %}
-
 from django.test import TestCase
 
 import {{ cookiecutter.package_name }}
@@ -14,15 +13,16 @@ class MainTestCase(TestCase):
 
     def setUp(self):
         """Setup method."""
-        pass
+        self.package = {{ cookiecutter.package_name }}
 
     def test_main(self):
         """Main test method."""
-        assert {{ cookiecutter.package_name }}
+        assert self.package
 
     def tearDown(self):
         """Tear down method."""
-        pass
+        del self.package
+
 
 {%- else %}
 
@@ -36,7 +36,6 @@ from {{ cookiecutter.package_name }}.cli import main
 
 import {{ cookiecutter.package_name }}
 {%- endif %}
-
 
 def test_main():
     """Main test method."""

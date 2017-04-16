@@ -20,7 +20,6 @@
     "command_line_interface": ["no", "plain", "argparse", "click"],
     "command_line_interface_bin_name": "{{ cookiecutter.distribution_name }}",
 
-    "appveyor": ["no", "yes"],
     "codacy" : ["yes", "no"],
     "codeclimate" : ["no", "yes"],
     "codecov": ["no", "yes"],

@@ -98,12 +98,6 @@ if __name__ == "__main__":
     os.unlink('runtests.py')
 {% endif %}
 
-{%- if cookiecutter.appveyor|lower == 'no' %}
-    os.unlink('appveyor.yml')
-{% else %}
-    lint_yaml('appveyor.yml')
-{% endif %}
-
 {%- if cookiecutter.travis|lower == 'no' %}
     os.unlink('.travis.yml')
 {% else %}
