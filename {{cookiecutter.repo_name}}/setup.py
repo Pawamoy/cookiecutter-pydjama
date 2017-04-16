@@ -49,13 +49,12 @@ setup(
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: ISC License (ISCL)',
-        'Operating System :: Unix',
-        'Operating System :: POSIX',
-        'Operating System :: Microsoft :: Windows',{% if cookiecutter.django|lower == "yes" %}
+        'Operating System :: Unix',{% if cookiecutter.django|lower == "yes" %}
         'Framework :: Django',{% if '1.8' in cookiecutter.django_versions %}
         # 'Framework :: Django :: 1.8',{% endif %}{% if '1.9' in cookiecutter.django_versions %}
         # 'Framework :: Django :: 1.9',{% endif %}{% if '1.10' in cookiecutter.django_versions %}
-        # 'Framework :: Django :: 1.10',{% endif %}{% endif %}
+        # 'Framework :: Django :: 1.10',{% endif %}{% if '1.11' in cookiecutter.django_versions %}
+        # 'Framework :: Django :: 1.11',{% endif %}{% endif %}
         'Programming Language :: Python',{% if '2.6' in cookiecutter.python_versions %}
         'Programming Language :: Python :: 2.6',{% endif %}{% if '2.7' in cookiecutter.python_versions %}
         'Programming Language :: Python :: 2.7',{% endif %}
