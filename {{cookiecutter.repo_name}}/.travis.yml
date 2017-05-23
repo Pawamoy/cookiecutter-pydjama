@@ -35,7 +35,7 @@ matrix:
         {% if cookiecutter.django|lower == "yes" %}
           {% for dj in cookiecutter.django_versions.split(',') %}
     - stage: test
-      after_success: tox -e {%- if cookiecutter.codacy|lower == 'yes' %}codacy,{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %}coveralls,{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %}codecov{% endif %}
+      after_success: tox -e {% if cookiecutter.codacy|lower == 'yes' %}codacy,{% endif %}{% if cookiecutter.coveralls|lower == 'yes' %}coveralls,{% endif %}{% if cookiecutter.codecov|lower == 'yes' %}codecov{% endif %}
       python: '{{ py }}'
       env: TOX_ENV=py{{ py|replace(".", "") }}-django{{ dj|replace(".", "") }}
           {% endfor %}
