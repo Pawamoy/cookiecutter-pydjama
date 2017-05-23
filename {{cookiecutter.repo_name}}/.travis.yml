@@ -7,60 +7,76 @@ branches:
     - master
 
 
-cache:
-  directories:
-    - "$HOME/.cache/pip"
+cache: pip
 
 
 matrix:
   include:
-    - python: '3.5'
+    - stage: check
+      python: '3.5'
+      env: TOX_ENV=setup
+    - stage: check
+      python: '3.5'
+      env: TOX_ENV=safety
+    - stage: check
+      python: '3.5'
+      env: TOX_ENV=style
+    - stage: check
+      python: '3.5'
       env: TOX_ENV=docs
-    - python: '3.5'
-      env: TOX_ENV=checksetup
-    - python: '3.5'
-      env: TOX_ENV=checksafety
-    - python: '3.5'
-      env: TOX_ENV=checkstyle
-    - python: '3.5'
-      env: TOX_ENV=checkspell
-    - python: '3.5'
-      env: TOX_ENV=checklink
+    - stage: check
+      python: '3.5'
+      env: TOX_ENV=spell
+    - stage: check
+      python: '3.5'
+      env: TOX_ENV=link
     {% for py in ["2.6", "2.7", "3.2", "3.3", "3.4", "3.5", "3.5-dev", "3.6", "3.6-dev", "3.7-dev"] %}
       {% if py in cookiecutter.python_versions.split(',') %}
         {% if cookiecutter.django|lower == "yes" %}
           {% for dj in cookiecutter.django_versions.split(',') %}
-    - python: '{{ py }}'
-      env: TOX_ENV=py{{ py|replace(".", "") }}-django{{ dj|replace(".", "") }}{%- if cookiecutter.codacy|lower == 'yes' %},codacy{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
+    - stage: test
+      after_success: tox -e {%- if cookiecutter.codacy|lower == 'yes' %}codacy,{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %}coveralls,{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %}codecov{% endif %}
+      python: '{{ py }}'
+      env: TOX_ENV=py{{ py|replace(".", "") }}-django{{ dj|replace(".", "") }}
           {% endfor %}
         {% else %}
-    - python: '{{ py }}'
-      env: TOX_ENV=py{{ py|replace(".", "") }}{%- if cookiecutter.codacy|lower == 'yes' %},codacy{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
+    - stage: test
+      after_success: tox -e {%- if cookiecutter.codacy|lower == 'yes' %}codacy,{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %}coveralls,{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %}codecov{% endif %}
+      python: '{{ py }}'
+      env: TOX_ENV=py{{ py|replace(".", "") }}
         {% endif %}
       {% endif %}
     {% endfor %}
     {% if "pypy" in cookiecutter.python_versions.split(',') %}
       {% if cookiecutter.django|lower == "yes" %}
         {% for dj in cookiecutter.django_versions.split(',') %}
-    - python: 'pypy'
-      env: TOX_ENV=pypy-django{{ dj|replace(".", "") }}{%- if cookiecutter.codacy|lower == 'yes' %},codacy{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
+    - stage: test
+      after_success: tox -e {%- if cookiecutter.codacy|lower == 'yes' %}codacy,{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %}coveralls,{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %}codecov{% endif %}
+      python: 'pypy'
+      env: TOX_ENV=pypy-django{{ dj|replace(".", "") }}
         {% endfor %}
       {% else %}
-    - python: 'pypy'
-      env: TOX_ENV=pypy{%- if cookiecutter.codacy|lower == 'yes' %},codacy{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %},coveralls{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %},codecov{% endif %}
+    - stage: test
+      after_success: tox -e {%- if cookiecutter.codacy|lower == 'yes' %}codacy,{% endif %}{%- if cookiecutter.coveralls|lower == 'yes' %}coveralls,{% endif %}{%- if cookiecutter.codecov|lower == 'yes' %}codecov{% endif %}
+      python: 'pypy'
+      env: TOX_ENV=pypy
       {% endif %}
     {% endif %}
   fast_finish: true
   allow_failures:
-    - python: '3.5'
-      env: TOX_ENV=checkstyle
-    - python: '3.5'
-      env: TOX_ENV=checkspell
-    - python: '3.5'
-      env: TOX_ENV=checklink
+    - stage: check
+      python: '3.5'
+      env: TOX_ENV=style
+    - stage: check
+      python: '3.5'
+      env: TOX_ENV=spell
+    - stage: check
+      python: '3.5'
+      env: TOX_ENV=link
     {% for py in ["3.5-dev", "3.6-dev", "3.7-dev"] %}
       {% if py in cookiecutter.python_versions.split(',') %}
-    - python: {{ py }}
+    - stage: test
+      python: {{ py }}
       {% endif %}
     {% endfor %}
 
