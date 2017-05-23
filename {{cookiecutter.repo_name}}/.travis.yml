@@ -3,8 +3,8 @@ language: python
 
 
 branches:
-  only:
-    - master
+  except:
+    - cookiecutter
 
 
 cache: pip
