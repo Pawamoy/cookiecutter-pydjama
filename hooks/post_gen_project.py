@@ -108,6 +108,10 @@ if __name__ == "__main__":
     os.unlink('.pyup.yml')
 {% endif %}
 
+{%- if cookiecutter.prospector|lower == 'no' %}
+    os.unlink('.prospector.yaml')
+{% endif %}
+
     print("""
 You have succesfully created `{{ cookiecutter.repo_name }}`
 with these cookiecutter parameters:

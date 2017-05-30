@@ -20,8 +20,11 @@
     "command_line_interface": ["no", "plain", "argparse", "click"],
     "command_line_interface_bin_name": "{{ cookiecutter.distribution_name }}",
 
-    "codacy" : ["yes", "no"],
-    "codeclimate" : ["no", "yes"],
+    "pylama": ["no", "yes"],
+    "prospector": ["yes", "no"],
+
+    "codacy": ["yes", "no"],
+    "codeclimate": ["no", "yes"],
     "codecov": ["no", "yes"],
     "coveralls": ["no", "yes"],
     "gitter": ["yes", "no"],
