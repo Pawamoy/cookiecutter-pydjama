@@ -24,7 +24,7 @@ echo "\033[1;36m=======================================================\033[0m"
 
 workdir=".tox/$(echo $1 | shasum | cut -c-6)"
 rm -rf "${workdir}/no-repo-name"
-config_file="ci/envs/${1#*-}.cookiecutterrc"
+config_file="ci/envs/$1.cookiecutterrc"
 cookiecutter --no-input --config-file "${config_file}" -o "${workdir}" .
 cd "${workdir}/no-repo-name"
 git init . >/dev/null 2>&1
