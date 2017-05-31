@@ -4,22 +4,22 @@ python:
 cache: pip
 jobs:
   include:
-    - ENV: fnaccents-pnaccents-no-django
-    - ENV: fnaccents-pnaccents-no-nodj
-    - ENV: fndef-pndef-argparse-django
-    - ENV: fndef-pndef-argparse-nodj
-    - ENV: fndef-pndef-click-django
-    - ENV: fndef-pndef-click-nodj
-    - ENV: fndef-pndef-no-django
-    - ENV: fndef-pndef-no-nodj
-    - ENV: fndef-pndef-plain-django
-    - ENV: fndef-pndef-plain-nodj
-    - ENV: fndef-pnquotes-no-django
-    - ENV: fndef-pnquotes-no-nodj
-    - ENV: fnquotes-pndef-no-django
-    - ENV: fnquotes-pndef-no-nodj
-    - ENV: fnquotes-pnquotes-no-django
-    - ENV: fnquotes-pnquotes-no-nodj
+    - env: ENV=fnaccents-pnaccents-no-django
+    - env: ENV=fnaccents-pnaccents-no-nodj
+    - env: ENV=fndef-pndef-argparse-django
+    - env: ENV=fndef-pndef-argparse-nodj
+    - env: ENV=fndef-pndef-click-django
+    - env: ENV=fndef-pndef-click-nodj
+    - env: ENV=fndef-pndef-no-django
+    - env: ENV=fndef-pndef-no-nodj
+    - env: ENV=fndef-pndef-plain-django
+    - env: ENV=fndef-pndef-plain-nodj
+    - env: ENV=fndef-pnquotes-no-django
+    - env: ENV=fndef-pnquotes-no-nodj
+    - env: ENV=fnquotes-pndef-no-django
+    - env: ENV=fnquotes-pndef-no-nodj
+    - env: ENV=fnquotes-pnquotes-no-django
+    - env: ENV=fnquotes-pnquotes-no-nodj
 before_install:
   - python --version
   - virtualenv --version
