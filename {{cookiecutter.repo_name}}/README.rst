@@ -81,11 +81,11 @@
     :alt: Updates
 {% endif %}
 .. |version| image:: https://img.shields.io/pypi/v/{{ cookiecutter.distribution_name }}.svg?style=flat
-    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
+    :target: https://pypi.org/project/{{ cookiecutter.distribution_name }}/
     :alt: PyPI Package latest release
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/{{ cookiecutter.distribution_name }}.svg?style=flat
-    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}/
+    :target: https://pypi.org/project/{{ cookiecutter.distribution_name }}/
     :alt: PyPI Wheel
 {% if cookiecutter.gitter|lower == 'yes' %}
 .. |gitter| image:: https://badges.gitter.im/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.svg
