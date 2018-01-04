@@ -1,0 +1,69 @@
+--title "Cookiecutter Pydjama"
+--center
+--height 600
+--width 500
+
+--form
+--scroll
+
+--field "Full name" "Timothee Mazzucotelli"
+--field "Email" "timothee.mazzucotelli@gmail.com"
+--field "Website" "http://pawamoy.github.io/"
+
+--field :LBL ""
+
+--field "GitHub username" "Pawamoy"
+--field "Project name" "No Project Name"
+--field "Repo name" "no-repo-name"
+--field "Package name" "no_package_name"
+--field "Distribution name" "no-distrib-name"
+--field "Project short description" "An example package."
+--field "Release date" "today"
+--field "Version" "0.1.0"
+
+--field :LBL ""
+
+--field "Python versions":LBL ""
+--field "2.7":CHK false
+--field "3.4":CHK false
+--field "3.5":CHK false
+--field "3.6":CHK false
+--field "3.7-dev":CHK false
+--field "pypy":CHK false
+
+--field :LBL ""
+
+--field "Django versions":LBL ""
+--field "1.8":CHK false
+--field "1.9":CHK false
+--field "1.10":CHK false
+--field "1.11":CHK false
+--field "2.0":CHK false
+
+--field :LBL ""
+
+--field "Use django-fake-model for tests":CHK false
+
+--field :LBL ""
+
+--field "Command line interface":CB 'None!Plain!Argparse!Click'
+--field "Command line interface bin name" "no-distrib-name"
+
+--field :LBL ""
+
+--field "Tools":LBL ""
+--field "Pylama":CHK false
+--field "Prospector":CHK true
+
+--field :LBL ""
+
+--field "Services (and badges)":LBL ""
+--field "Codacy":CHK true
+--field "Codeclimate":CHK false
+--field "Codecov":CHK false
+--field "Coveralls":CHK false
+--field "Gitter":CHK true
+--field "Landscape":CHK false
+--field "Pyup":CHK true
+--field "Requiresio":CHK false
+--field "Travis":CHK true

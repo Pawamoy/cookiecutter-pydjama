@@ -3,33 +3,27 @@
     "email": "timothee.mazzucotelli@gmail.com",
     "website": "http://pawamoy.github.io/",
 
-    "github_username": "Pawamoy",
+    "provider": ["github", "gitlab"],
+    "username": "Pawamoy",
     "project_name": "No Project Name",
     "repo_name": "no-repo-name",
+    "repo_namespace": "{{ cookiecutter.username }}",
     "package_name": "no_package_name",
     "distribution_name": "no-distrib-name",
     "project_short_description": "An example package.",
     "release_date": "today",
     "version": "0.1.0",
 
-    "python_versions": "2.7,3.4,3.5,3.6,3.7-dev,pypy",
+    "python_versions": "2.7,3.5,3.6,3.7-dev",
     "django": ["no", "yes"],
-    "django_versions": "1.8,1.9,1.10,1.11",
+    "django_versions": "1.11,2.0",
     "django_fake_model": ["no", "yes"],
 
     "command_line_interface": ["no", "plain", "argparse", "click"],
     "command_line_interface_bin_name": "{{ cookiecutter.distribution_name }}",
 
-    "pylama": ["no", "yes"],
-    "prospector": ["yes", "no"],
-
     "codacy": ["yes", "no"],
-    "codeclimate": ["no", "yes"],
-    "codecov": ["no", "yes"],
-    "coveralls": ["no", "yes"],
     "gitter": ["yes", "no"],
-    "landscape": ["no", "yes"],
     "pyup": ["yes", "no"],
-    "requiresio": ["no", "yes"],
     "travis": ["yes", "no"]
 }
