@@ -17,13 +17,17 @@ from os.path import basename, dirname, join, splitext
 
 from setuptools import find_packages, setup
 
-
-def read(*names, **kwargs):
-    """Read a file in current directory."""
-    return io.open(
-        join(dirname(__file__), *names),
-        encoding=kwargs.get('encoding', 'utf8')
-    ).read()
+def get_long_description():
+    def read(*names, **kwargs):
+        """Read a file in current directory."""
+        return io.open(
+            join(dirname(__file__), *names),
+            encoding=kwargs.get('encoding', 'utf8')
+        ).read()
+    return '%s\n%s' % (
+        re.compile('^.. start-badges.*^.. end-badges', re.M | re.S)
+        .sub('', read('README.rst')),
+        re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst')))
 
 
 setup(
@@ -31,11 +35,7 @@ setup(
     version='{{ cookiecutter.version }}',
     license='ISC',
     description={{ '{0!r}'.format(cookiecutter.project_short_description).lstrip('ub') }},
-    long_description='%s\n%s' % (
-        re.compile('^.. start-badges.*^.. end-badges', re.M | re.S)
-        .sub('', read('README.rst')),
-        re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
-    ),
+    long_description=get_long_description(),
     author={{ '{0!r}'.format(cookiecutter.full_name).lstrip('rb') }},
     author_email={{ '{0!r}'.format(cookiecutter.email).lstrip('ub') }},
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}',

@@ -1,30 +1,62 @@
+PYTEST_OPTS = --cov --cov-append --cov-report=term-missing -vv
+
 all: clean check test report
 
 django18:
 	pip install Django>=1.8,<1.9
+
 django19:
 	pip install Django>=1.9,<1.10
+
 django110:
 	pip install Django>=1.10,<1.11
+
 django111:
 	pip install Django>=1.11,<1.12
+
 django20:
 	pip install Django>=2.0,<2.1
+
+djangofakemodel:
+	pip install django-fake-model
+
+python27:
+	pyenv local 2.7.9
+
+python35:
+	pyenv local 3.5.4
+
+python36:
+	pyenv local 3.6.4
+
+python37:
+	pyenv local 3.7-dev
+
 bandit:
 	pip install bandit
+
 safety:
 	pip install safety
+
 prospector:
 	pip install prospector[with_everything]
+
 pylint:
 	pip install pylint
+
 sphinx:
 	pip install sphinx sphinx-rtd-theme
+
 spelling:
 	pip install sphinxcontrib-spelling
 	pip install pyenchant
+
 coverage:
 	pip install coverage
+
+pytest:
+	pip install pytest
+	pip install pytest-cov
 
 check: checksecurity checkstyle checkdocs
 
@@ -61,31 +93,19 @@ clean:
 
 test: py27 py35 py36 py37
 
-py27: python27
-	python -m pytest --cov --cov-report=term-missing -vv tests
+
+py27: pytest python27
+	pytest $(PYTEST_OPTS) tests
 	pyenv local --unset
 
-py35: python35
-	python -m pytest --cov --cov-report=term-missing -vv tests
+py35: pytest python35
+	pytest $(PYTEST_OPTS) tests
 	pyenv local --unset
 
-py36: python36
-	python -m pytest --cov --cov-report=term-missing -vv tests
+py36: pytest python36
+	pytest $(PYTEST_OPTS) tests
 	pyenv local --unset
 
-py37: python37
-	python -m pytest --cov --cov-report=term-missing -vv tests
+py37: pytest python37
+	pytest $(PYTEST_OPTS) tests
 	pyenv local --unset
-
-
-python27:
-	pyenv local 2.7.9
-
-python35:
-	pyenv local 3.5.4
-
-python36:
-	pyenv local 3.6.4
-
-python37:
-	pyenv local 3.7-dev
