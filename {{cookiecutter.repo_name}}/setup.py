@@ -30,8 +30,8 @@ def get_long_description():
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst')))
 
 
-setup(
-    name='{{ cookiecutter.distribution_name }}',
+setup(name='{{ cookiecutter.distribution_name }}')
+"""
     version='{{ cookiecutter.version }}',
     license='ISC',
     description={{ '{0!r}'.format(cookiecutter.project_short_description).lstrip('ub') }},
@@ -90,3 +90,4 @@ setup(
     },
 {%- endif %}
 )
+"""
