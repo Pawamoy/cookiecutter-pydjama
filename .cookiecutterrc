@@ -1,0 +1,18 @@
+# This file exists so you can easily regenerate your project.
+
+default_context:
+
+    _copy_without_render:            ['cookiecutter.json', 'licenses', 'hooks', '{{cookiecutter.repository_name}}']
+    _template:                       'pawamoy/cookiecutter-cookiecutter'
+    author_email:                    'timothee.mazzucotelli@gmail.com'
+    author_fullname:                 'Timothée Mazzucotelli'
+    author_username:                 'Pawamoy'
+    copyright_date:                  '2018'
+    copyright_holder:                'Timothée Mazzucotelli'
+    copyright_holder_email:          'timothee.mazzucotelli@gmail.com'
+    copyright_license:               'ISC License'
+    project_description:             'Opinionated cookiecutter to create Python and Django projects.'
+    project_name:                    'Cookiecutter-Pydjama'
+    repository_name:                 'cookiecutter-pydjama'
+    repository_namespace:            'Pawamoy'
+    repository_provider:             'github.com'

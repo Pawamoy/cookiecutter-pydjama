@@ -1,9 +1,0 @@
--r base.txt
-
-pytest
-pytest-travis-fold
-pytest-cov
-{% if cookiecutter.django|lower == "yes" %}
-pytest-django
-{% if cookiecutter.django_fake_model|lower == "yes" %}django-fake-model{% endif %}
-{% endif %}

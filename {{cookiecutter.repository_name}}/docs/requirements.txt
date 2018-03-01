@@ -1,0 +1,5 @@
+sphinx
+sphinx-rtd-theme
+recommonmark
+{% if cookiecutter.django|lower == "yes" %}Django{% endif %}
+-e .

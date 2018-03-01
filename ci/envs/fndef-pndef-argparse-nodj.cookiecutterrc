@@ -1,5 +1,0 @@
-default_context:
-  command_line_interface: argparse
-  django: 'no'
-  package_name: no_package_name
-  repo_name: no-repo-name

@@ -1,7 +1,0 @@
-default_context:
-  command_line_interface: 'no'
-  django: 'yes'
-  full_name: Io"'nel
-  package_name: no_package_name
-  project_name: Name"'less
-  repo_name: no-repo-name
