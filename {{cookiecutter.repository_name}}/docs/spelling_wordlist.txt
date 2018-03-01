@@ -1,0 +1,20 @@
+builtin
+builtins
+classmethod
+staticmethod
+classmethods
+staticmethods
+args
+kwargs
+callstack
+Changelog
+Indices
+docstrings
+{{ cookiecutter.package_installation_name }}
+{{ cookiecutter.package_name }}
+{{ cookiecutter.repository_name }}
+{{ cookiecutter.author_username }}
+{{ cookiecutter.project_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') | lower }}
+{{ cookiecutter.author_fullname | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') }}
+{% if cookiecutter.django|lower == "yes" %}Django
+django{% endif %}
