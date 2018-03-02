@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Entrypoint module, in case you use `python -m{{cookiecutter.package_name}}`.
+Entrypoint module, in case you use `python -m{{cookiecutter.package_import_name}}`.
 
 Why does this file exist, and why __main__? For more info, read:
 
@@ -11,10 +11,10 @@ Why does this file exist, and why __main__? For more info, read:
 """
 import sys
 
-from {{cookiecutter.package_name}}.cli import main
+from {{cookiecutter.package_import_name}}.cli import main
 
 if __name__ == "__main__":
-{%- if cookiecutter.command_line_interface|lower == 'plain' %}
+{%- if cookiecutter.package_cli_library|lower == 'none' %}
     sys.exit(main(sys.argv))
 {%- else %}
     main(sys.argv)

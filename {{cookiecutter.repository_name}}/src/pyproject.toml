@@ -1,8 +1,8 @@
 [tool.flit.metadata]
-module="{{ cookiecutter.package_use_name }}"
+module="{{ cookiecutter.package_import_name }}"
 author="{{ cookiecutter.author_fullname }}"
 author-email="{{ cookiecutter.author_email }}"
-home-page="https://{{ cookiecutter.repository_provider }}.com/{{ cookiecutter.repository_namespace }}/{{ cookiecutter.repository_name }}"
+home-page="https://{{ cookiecutter.repository_provider }}/{{ cookiecutter.repository_namespace }}/{{ cookiecutter.repository_name }}"
 requires=[]
 requires-python="3"
 # description-file="README.rst"  # FIXME: ../README.md
@@ -12,10 +12,10 @@ classifiers=[
     # "License :: OSI Approved :: ISC License (ISCL)",  # FIXME
     "Development Status :: 3 - Alpha",
     "Operating System :: Unix",
-    {% if cookiecutter.django|lower == "yes" -%}"Framework :: Django",{%- endif %}
+    {% if cookiecutter.framework_django|lower == "yes" -%}"Framework :: Django",{%- endif %}
     "Programming Language :: Python :: 3",
     'Topic :: Utilities',
 ]
 
 [tool.flit.entrypoints."console_scripts"]
-{{ cookiecutter.package_cli_name }} = "{{ cookiecutter.package_use_name }}.cli:main"
+{{ cookiecutter.package_cli_name }} = "{{ cookiecutter.package_import_name }}.cli:main"

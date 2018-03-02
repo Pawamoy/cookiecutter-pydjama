@@ -11,10 +11,10 @@ Changelog
 Indices
 docstrings
 {{ cookiecutter.package_installation_name }}
-{{ cookiecutter.package_name }}
+{{ cookiecutter.package_import_name }}
 {{ cookiecutter.repository_name }}
 {{ cookiecutter.author_username }}
 {{ cookiecutter.project_name | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') | lower }}
 {{ cookiecutter.author_fullname | replace(' ', '\n') | replace('"', '\n') | replace("'", '\n') }}
-{% if cookiecutter.django|lower == "yes" %}Django
+{% if cookiecutter.package_uses_django|lower == "yes" %}Django
 django{% endif %}

@@ -7,8 +7,9 @@ from __future__ import unicode_literals
 import os
 
 from recommonmark.parser import CommonMarkParser
+from recommonmark.transform import AutoStructify
 
-{% if cookiecutter.django|lower == "yes" -%}
+{% if cookiecutter.package_uses_django|lower == "yes" -%}
 import sys
 import django
 from django.conf import settings
@@ -60,10 +61,11 @@ author = {{ '{0!r}'.format(cookiecutter.author_fullname) }}
 copyright = '{0}, {1}'.format(year, author)
 version = release = '0.1.0'
 
+provider_root = 'https://{{ cookiecutter.repository_provider }}/{{ cookiecutter.repository_namespace }}/{{ cookiecutter.repository_name }}'
 pygments_style = 'trac'
 templates_path = ['.']
 extlinks = {
-    'issue': ('https://{{ cookiecutter.repository_provider }}/{{ cookiecutter.repository_namespace }}/{{ cookiecutter.repository_name }}/issues/%s', '#'),
+    'issue': ('{}/issues/%s'.format(provider_root), '#'),
 }
 
 # on_rtd is whether we are on readthedocs.org
@@ -93,3 +95,15 @@ napoleon_use_ivar = True
 napoleon_use_rtype = False
 napoleon_use_param = False
 suppress_warnings = ["image.nonlocal_uri"]
+
+provider_doc_root = provider_root + '/blob/master/'
+
+
+def setup(app):
+    app.add_config_value(
+        'recommonmark_config', {
+            'enable_auto_toc_tree': True,
+            'auto_toc_tree_section': "Welcome to {{ cookiecutter.project_name|replace('"', '\\"') }}'s documentation!",
+            'url_resolver': lambda url: provider_doc_root + url
+        }, True)
+    app.add_transform(AutoStructify)

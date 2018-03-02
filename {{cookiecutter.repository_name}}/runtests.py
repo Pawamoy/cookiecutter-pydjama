@@ -25,7 +25,7 @@ try:
             'django.contrib.auth',
             'django.contrib.contenttypes',
             'django.contrib.sites',
-            '{{ cookiecutter.package_name }}',
+            '{{ cookiecutter.package_import_name }}',
         ],
         SITE_ID=1,
         MIDDLEWARE_CLASSES=()

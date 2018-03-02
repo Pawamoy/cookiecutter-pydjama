@@ -24,8 +24,8 @@ def render_template(source, target):
         stream.write(rendered)
 
 
-def render_license():
-    """Render the selected license in the LICENSE file."""
+def copy_license():
+    """Copy the selected rendered license to the LICENSE file."""
     target = 'LICENSE'
     source = os.path.join(
         'licenses',
@@ -35,8 +35,18 @@ def render_license():
             .replace('/', '-')
             .replace(' ', '_'))
 
-    render_template(source, target)
+    shutil.copyfile(source, target)
     shutil.rmtree('licenses')
 
 
-render_license()
+def remove_django_files():
+    """Remove the Django related files."""
+    os.remove('runtests.py')
+
+
+context = get_context()
+
+copy_license()
+
+if context['cookiecutter']['package_uses_django'].lower() != 'yes':
+    remove_django_files()

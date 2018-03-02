@@ -8,11 +8,14 @@
 
   "repository_provider": ["github.com", "gitlab.com", "bitbucket.org"],
   "repository_namespace": "{{ cookiecutter.author_username }}",
-  "repository_name": "{{ cookiecutter.project_name.lower().replace('_', '-').replace(' ', '-') }}",
+  "repository_name": "{{ cookiecutter.project_name|lower|replace('_', '-')|replace(' ', '-') }}",
 
-  "package_use_name": "{{ cookiecutter.project_name.lower().replace('-', '_').replace(' ', '_') }}",
+  "package_import_name": "{{ cookiecutter.project_name|lower|replace('-', '_')|replace(' ', '_') }}",
   "package_installation_name": "{{ cookiecutter.repository_name }}",
+
+  "package_uses_django": "yes",
   "package_cli_name": "{{ cookiecutter.repository_name }}",
+  "package_cli_library": ["none", "argparse", "click"],
 
   "copyright_holder": "{{ cookiecutter.author_fullname }}",
   "copyright_holder_email": "{{ cookiecutter.author_email }}",
@@ -51,9 +54,5 @@
     "PostgreSQL License",
     "The Unlicense",
     "zlib License"
-  ],
-
-  "_copy_without_render": [
-    "licenses",
   ]
 }
